@@ -6,11 +6,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Jhonatan Peterson — Imobiliária de Alto Padrão</title>
   <meta name="description" content="Imóveis de alto padrão com curadoria, estratégia e atendimento premium." />
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;700;800&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="./assets/favicon-96x96.png" sizes="96x96" />
   <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
   <link rel="shortcut icon" href="./assets/favicon.ico" />
-  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="apple-mobile-web-app-title" content="JP IMÓVEIS" />
   <link rel="manifest" href="./assets/site.webmanifest" />
 
@@ -21,7 +20,7 @@
 
     @font-face {
       font-family: "Lato";
-      src: url("./assets-fonts/lato-regular.ttf") format("truetype");
+      src: url("./assets-fonts/Lato-Regular.ttf") format("truetype");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -29,7 +28,7 @@
 
     @font-face {
       font-family: "Lato";
-      src: url("./assets-fonts/lato-lightitalic.ttf") format("truetype");
+      src: url("./assets-fonts/Lato-LightItalic.ttf") format("truetype");
       font-weight: 300;
       font-style: italic;
       font-display: swap;
@@ -37,7 +36,7 @@
 
     @font-face {
       font-family: "Lato";
-      src: url("./assets-fonts/lato-bold.ttf") format("truetype");
+      src: url("./assets-fonts/Lato-Bold.ttf") format("truetype");
       font-weight: 700;
       font-style: normal;
       font-display: swap;
@@ -71,22 +70,16 @@
     }
 
     body {
-      min-height: 100vh;
+      min-height: 100dvh;
       font-family: 'Manrope', system-ui, sans-serif;
       color: var(--text);
       overflow-x: hidden;
-      max-width: 100vw;
       width: 100%;
       background: linear-gradient(to bottom, #171307 50%, #726b30db 100%);
-      background-position-x: 0%;
-      background-position-y: 0%;
-      background-attachment: scroll;
-      background-size: auto;
-      background-attachment: fixed;
       background-size: cover;
       background-position: center;
+      background-attachment: fixed;
       margin: 0;
-      height: 100vh;
     }
 
     h1,
@@ -327,6 +320,7 @@
       border-radius: 18px;
       background: rgba(0, 0, 0, .26);
       border: 2px outset rgba(212, 178, 106, 0.36);
+      margin-bottom: 15px;
     }
 
     .tag {
@@ -687,7 +681,8 @@
       <nav class="nav">
         <a class="btn" href="#propriedades">Propriedades</a>
         <a class="btn" href="#diferenciais">Diferenciais</a>
-        <a class="btn primary" href="#contato">Falar agora</a>
+        <a class="btn primary" href="https://wa.me/5511993747595" target="_blank" rel="noopener noreferrer">Falar
+          agora</a>
       </nav>
     </header>
 
@@ -707,12 +702,11 @@
       </div>
 
       <div class="hero-cta">
-        <a class="btn" href="#propriedades">Ver propriedades</a>
-        <a class="btn primary" href="#diferenciais">Ver como funciona</a>
-        <!-- Troque o link do WhatsApp abaixo -->
-        <a class="btn" href="https://wa.me/5511993747595" target="_blank" rel="noopener noreferrer">
-          WhatsApp
+        <a class="btn primary" href="https://wa.me/5511993747595" target="_blank" rel="noopener noreferrer">
+          Falar no WhatsApp
         </a>
+        <a class="btn" href="#propriedades">Ver propriedades</a>
+        <a class="btn" href="#diferenciais">Ver como funciona</a>
       </div>
     </section>
     <div class="pill-row">
@@ -853,212 +847,207 @@
             por nos ajudar mais uma vez a encontrar o lar da nossa família!"
           </strong></div>
       </div>
-  </div>
-  </div>
-  </section>
+    </section>
 
-  <div class="foot">
-    <a class="back" href="#" onclick="return false;">← voltar</a>
-    <span>Jhonatan Peterson • Imobiliária de Alto Padrão • <span
-        style="color: rgba(255,242,201,.90); font-weight:800;">Golden premium</span>.</span>
-  </div>
-  </div>
-  </div>
-  </div>
+    <div class="foot">
+      <a class="back" href="#" onclick="return false;">← voltar</a>
+      <span>Jhonatan Peterson • Imobiliária de Alto Padrão • <span
+          style="color: rgba(255,242,201,.90); font-weight:800;">Golden premium</span>.</span>
+    </div>
 
-  <!-- Modal Structure - Moved outside nested containers -->
-  <div id="myModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2 id="modalTitle" style="color: #fff; text-align: center; margin-bottom: 20px;"></h2>
-      <div class="modal-images" id="modalImages">
-        <!-- Images will be populated by JavaScript -->
+    <!-- Modal Structure - Moved outside nested containers -->
+    <div id="myModal" class="modal">
+      <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2 id="modalTitle" style="color: #fff; text-align: center; margin-bottom: 20px;"></h2>
+        <div class="modal-images" id="modalImages">
+          <!-- Images will be populated by JavaScript -->
+        </div>
       </div>
     </div>
-  </div>
 
-  <!-- Fullscreen Image Viewer -->
-  <div id="fullscreenViewer" class="modal-fullscreen" style="display: none;">
-    <img id="fullscreenImage" src="" alt="Fullscreen" />
-  </div>
+    <!-- Fullscreen Image Viewer -->
+    <div id="fullscreenViewer" class="modal-fullscreen" style="display: none;">
+      <img id="fullscreenImage" src="" alt="Fullscreen" />
+    </div>
 
-  <script>
-    // Property data - easily expandable
-    const propertyData = {
-      'morada-do-sol': {
-        title: 'Morada do Sol - Galeria de Fotos',
-        images: [
-          './assets/MORADADOSOL1/moradadosolcapa.jpeg',
-          './assets/MORADADOSOL1/moradadosol1-1.jpeg',
-          './assets/MORADADOSOL1/moradadosol2.jpeg',
-          './assets/MORADADOSOL1/moradadosol3.jpeg',
-          './assets/MORADADOSOL1/moradadosol4.jpeg',
-          './assets/MORADADOSOL1/moradadosol5.jpeg',
-          './assets/MORADADOSOL1/moradadosol6.jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.03 (5).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.03 (6).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (2).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (3).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (4).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04.jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (1).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (2).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (3).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (4).jpeg',
-          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05.jpeg'
-        ]
-      },
-      'morada-do-sol2': {
-        title: 'Morada do Sol 2 - Galeria de Fotos',
-        images: [
-          './assets/MORADADOSOL2/moradadosol2-1.jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (1).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (2).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (3).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37.jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (1).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (2).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (3).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (4).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (5).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38.jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (1).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (2).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (3).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (4).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (5).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39.jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (1).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (2).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (3).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (4).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40.jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (1).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (2).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (3).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (4).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (5).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (6).jpeg',
-          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41.jpeg'
-        ]
-      },
-      'fazenda': {
-        title: 'Fazenda de Alto Padrão - Galeria de Fotos',
-        images: [
-          './assets/FAZENDA/fazenda1.jpeg',
-          './assets/FAZENDA/fazenda2.jpeg',
-          './assets/FAZENDA/fazenda3.jpeg',
-          './assets/FAZENDA/fazenda4.jpeg',
-          './assets/FAZENDA/fazenda5.jpeg',
-          './assets/FAZENDA/fazenda6.jpeg',
-          './assets/FAZENDA/fazenda7.jpeg',
-          './assets/FAZENDA/fazenda8.jpeg',
-          './assets/FAZENDA/fazenda9.jpeg',
-          './assets/FAZENDA/fazenda10.jpeg',
-          './assets/FAZENDA/fazenda11.jpeg',
-          './assets/FAZENDA/fazenda12.jpeg',
-          './assets/FAZENDA/fazenda13.jpeg',
-          './assets/FAZENDA/fazenda14.jpeg',
-          './assets/FAZENDA/fazenda15.jpeg',
-          './assets/FAZENDA/fazenda16.jpeg',
-          './assets/FAZENDA/fazenda17.jpeg',
-          './assets/FAZENDA/fazenda18.jpeg',
-          './assets/FAZENDA/fazenda19.jpeg',
-          './assets/FAZENDA/fazenda20.jpeg',
-          './assets/FAZENDA/fazenda21.jpeg',
-          './assets/FAZENDA/fazenda22.jpeg'
-        ]
+    <script>
+      // Property data - easily expandable
+      const propertyData = {
+        'morada-do-sol': {
+          title: 'Morada do Sol - Galeria de Fotos',
+          images: [
+            './assets/MORADADOSOL1/moradadosolcapa.jpeg',
+            './assets/MORADADOSOL1/moradadosol1-1.jpeg',
+            './assets/MORADADOSOL1/moradadosol2.jpeg',
+            './assets/MORADADOSOL1/moradadosol3.jpeg',
+            './assets/MORADADOSOL1/moradadosol4.jpeg',
+            './assets/MORADADOSOL1/moradadosol5.jpeg',
+            './assets/MORADADOSOL1/moradadosol6.jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.03 (5).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.03 (6).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (2).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (3).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (4).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04.jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (1).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (2).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (3).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (4).jpeg',
+            './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05.jpeg'
+          ]
+        },
+        'morada-do-sol2': {
+          title: 'Morada do Sol 2 - Galeria de Fotos',
+          images: [
+            './assets/MORADADOSOL2/moradadosol2-1.jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (1).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (2).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (3).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37.jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (1).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (2).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (3).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (4).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (5).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38.jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (1).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (2).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (3).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (4).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (5).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39.jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (1).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (2).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (3).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (4).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40.jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (1).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (2).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (3).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (4).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (5).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (6).jpeg',
+            './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41.jpeg'
+          ]
+        },
+        'fazenda': {
+          title: 'Fazenda de Alto Padrão - Galeria de Fotos',
+          images: [
+            './assets/FAZENDA/fazenda1.jpeg',
+            './assets/FAZENDA/fazenda2.jpeg',
+            './assets/FAZENDA/fazenda3.jpeg',
+            './assets/FAZENDA/fazenda4.jpeg',
+            './assets/FAZENDA/fazenda5.jpeg',
+            './assets/FAZENDA/fazenda6.jpeg',
+            './assets/FAZENDA/fazenda7.jpeg',
+            './assets/FAZENDA/fazenda8.jpeg',
+            './assets/FAZENDA/fazenda9.jpeg',
+            './assets/FAZENDA/fazenda10.jpeg',
+            './assets/FAZENDA/fazenda11.jpeg',
+            './assets/FAZENDA/fazenda12.jpeg',
+            './assets/FAZENDA/fazenda13.jpeg',
+            './assets/FAZENDA/fazenda14.jpeg',
+            './assets/FAZENDA/fazenda15.jpeg',
+            './assets/FAZENDA/fazenda16.jpeg',
+            './assets/FAZENDA/fazenda17.jpeg',
+            './assets/FAZENDA/fazenda18.jpeg',
+            './assets/FAZENDA/fazenda19.jpeg',
+            './assets/FAZENDA/fazenda20.jpeg',
+            './assets/FAZENDA/fazenda21.jpeg',
+            './assets/FAZENDA/fazenda22.jpeg'
+          ]
+        }
+      };
+
+      // DOM Elements
+      const modal = document.getElementById('myModal');
+      const modalImagesContainer = document.getElementById('modalImages');
+      const modalTitle = document.getElementById('modalTitle');
+      const closeBtn = document.querySelector('.close');
+      const fullscreenViewer = document.getElementById('fullscreenViewer');
+      const fullscreenImage = document.getElementById('fullscreenImage');
+
+      // Function to open modal with specific property
+      function openModal(propertyId) {
+        const property = propertyData[propertyId];
+        if (!property) {
+          console.error('Property not found:', propertyId);
+          return;
+        }
+
+        // Set title
+        modalTitle.textContent = property.title;
+
+        // Clear previous images
+        modalImagesContainer.innerHTML = '';
+
+        // Add images to modal
+        property.images.forEach((src, index) => {
+          const img = document.createElement('img');
+          img.src = src;
+          img.alt = property.title + ' - Imagem ' + (index + 1);
+          img.loading = 'lazy'; // Lazy loading for performance
+
+          // Add click event for fullscreen view
+          img.addEventListener('click', () => openFullscreen(src));
+
+          modalImagesContainer.appendChild(img);
+        });
+
+        // Show modal
+        modal.style.display = 'block';
+        document.body.style.overflow = 'hidden'; // Prevent background scrolling
       }
-    };
 
-    // DOM Elements
-    const modal = document.getElementById('myModal');
-    const modalImagesContainer = document.getElementById('modalImages');
-    const modalTitle = document.getElementById('modalTitle');
-    const closeBtn = document.querySelector('.close');
-    const fullscreenViewer = document.getElementById('fullscreenViewer');
-    const fullscreenImage = document.getElementById('fullscreenImage');
-
-    // Function to open modal with specific property
-    function openModal(propertyId) {
-      const property = propertyData[propertyId];
-      if (!property) {
-        console.error('Property not found:', propertyId);
-        return;
+      // Function to close modal
+      function closeModal() {
+        modal.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
       }
 
-      // Set title
-      modalTitle.textContent = property.title;
-
-      // Clear previous images
-      modalImagesContainer.innerHTML = '';
-
-      // Add images to modal
-      property.images.forEach((src, index) => {
-        const img = document.createElement('img');
-        img.src = src;
-        img.alt = property.title + ' - Imagem ' + (index + 1);
-        img.loading = 'lazy'; // Lazy loading for performance
-
-        // Add click event for fullscreen view
-        img.addEventListener('click', () => openFullscreen(src));
-
-        modalImagesContainer.appendChild(img);
-      });
-
-      // Show modal
-      modal.style.display = 'block';
-      document.body.style.overflow = 'hidden'; // Prevent background scrolling
-    }
-
-    // Function to close modal
-    function closeModal() {
-      modal.style.display = 'none';
-      document.body.style.overflow = 'auto'; // Restore scrolling
-    }
-
-    // Function to open fullscreen image viewer
-    function openFullscreen(imageSrc) {
-      fullscreenImage.src = imageSrc;
-      fullscreenViewer.style.display = 'flex';
-      document.body.style.overflow = 'hidden';
-    }
-
-    // Function to close fullscreen viewer
-    function closeFullscreen() {
-      fullscreenViewer.style.display = 'none';
-      document.body.style.overflow = 'auto';
-    }
-
-    // Close modal on button click
-    closeBtn.addEventListener('click', closeModal);
-
-    // Close modal on click outside content
-    window.addEventListener('click', (event) => {
-      if (event.target === modal) {
-        closeModal();
+      // Function to open fullscreen image viewer
+      function openFullscreen(imageSrc) {
+        fullscreenImage.src = imageSrc;
+        fullscreenViewer.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
       }
-      if (event.target === fullscreenViewer) {
-        closeFullscreen();
-      }
-    });
 
-    // Close modal on Escape key
-    document.addEventListener('keydown', (event) => {
-      if (event.key === 'Escape') {
-        if (fullscreenViewer.style.display === 'flex') {
-          closeFullscreen();
-        } else if (modal.style.display === 'block') {
+      // Function to close fullscreen viewer
+      function closeFullscreen() {
+        fullscreenViewer.style.display = 'none';
+        document.body.style.overflow = 'auto';
+      }
+
+      // Close modal on button click
+      closeBtn.addEventListener('click', closeModal);
+
+      // Close modal on click outside content
+      window.addEventListener('click', (event) => {
+        if (event.target === modal) {
           closeModal();
         }
-      }
-    });
+        if (event.target === fullscreenViewer) {
+          closeFullscreen();
+        }
+      });
 
-    // Close fullscreen on click
-    fullscreenViewer.addEventListener('click', closeFullscreen);
+      // Close modal on Escape key
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          if (fullscreenViewer.style.display === 'flex') {
+            closeFullscreen();
+          } else if (modal.style.display === 'block') {
+            closeModal();
+          }
+        }
+      });
 
-    console.log('Modal system initialized successfully');
-  </script>
+      // Close fullscreen on click
+      fullscreenViewer.addEventListener('click', closeFullscreen);
+
+      console.log('Modal system initialized successfully');
+    </script>
 </body>
 
 </html>
