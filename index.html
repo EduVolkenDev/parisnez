@@ -7,6 +7,12 @@
   <title>Jhonatan Peterson — Imobiliária de Alto Padrão</title>
   <meta name="description" content="Imóveis de alto padrão com curadoria, estratégia e atendimento premium." />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;700;800&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="./assets/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="./assets/favicon.svg" />
+  <link rel="shortcut icon" href="./assets/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="JP IMÓVEIS" />
+  <link rel="manifest" href="./assets/site.webmanifest" />
 
   <style>
     /* =========================
@@ -15,7 +21,7 @@
 
     @font-face {
       font-family: "Lato";
-      src: url("./assets/lato-regular.ttf") format("truetype");
+      src: url("./assets-fonts/lato-regular.ttf") format("truetype");
       font-weight: 400;
       font-style: normal;
       font-display: swap;
@@ -23,7 +29,7 @@
 
     @font-face {
       font-family: "Lato";
-      src: url("./assets/lato-light-italic.ttf") format("truetype");
+      src: url("./assets-fonts/lato-lightitalic.ttf") format("truetype");
       font-weight: 300;
       font-style: italic;
       font-display: swap;
@@ -31,7 +37,7 @@
 
     @font-face {
       font-family: "Lato";
-      src: url("./assets/lato-bold.ttf") format("truetype");
+      src: url("./assets-fonts/lato-bold.ttf") format("truetype");
       font-weight: 700;
       font-style: normal;
       font-display: swap;
@@ -67,14 +73,33 @@
     body {
       min-height: 100vh;
       font-family: 'Manrope', system-ui, sans-serif;
-      background: #000;
       color: var(--text);
       overflow-x: hidden;
+      max-width: 100vw;
+      width: 100%;
+      background: linear-gradient(to bottom, #171307 50%, #726b30db 100%);
+      background-position-x: 0%;
+      background-position-y: 0%;
+      background-attachment: scroll;
+      background-size: auto;
+      background-attachment: fixed;
+      background-size: cover;
+      background-position: center;
+      margin: 0;
+      height: 100vh;
     }
 
-    h1 {
+    h1,
+    h2,
+    h3,
+    h4 {
       font-family: "Lato", sans-serif;
       font-weight: 700;
+    }
+
+    p {
+      font-family: "Lato", sans-serif;
+      font-style: italic;
     }
 
     /* =========================
@@ -93,40 +118,16 @@
 
     .logo {
       display: grid;
-      place-items: center;
       gap: 10px;
       margin-bottom: 15px;
-      width: 100vw;
+      width: 100%;
       height: 100%;
-      padding-right: 30px;
+      justify-content: center;
     }
 
     .logo img {
       max-width: 100%;
-      max-height: 180px;
       display: block;
-    }
-
-    .creci {
-      text-align: center;
-      margin: -50px 0 20px 0;
-    }
-
-    .creci h1 {
-      font-size: 13px;
-      margin: 4px 0px 5px 0px;
-      line-height: 1.3;
-    }
-
-    .creci span {
-      font-size: 14px;
-      display: block;
-    }
-
-    .creci p {
-      margin: 0;
-      font-size: 10px;
-      opacity: 0.65;
     }
 
     /* =========================
@@ -154,25 +155,35 @@
     }
 
     .mark {
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
-      display: grid;
+      border-radius: 30%;
+      display: flex;
       place-items: center;
-      font-weight: 800;
-      border: 1px solid rgba(212, 178, 106, .32);
-      color: rgba(255, 242, 201, .95);
+      border: 2px inset rgb(212, 178, 106);
+      max-width: 100%;
+    }
+
+    .mark img {
+      width: 60px;
+      height: auto;
+      filter: brightness(1.4);
+    }
+
+    .brand-text {
+      display: grid;
+      width: auto;
+      height: auto;
     }
 
     .brand-text strong {
-      font-size: 12px;
-      letter-spacing: .12em;
+      font-size: 15px;
+      letter-spacing: 0.22em;
       text-transform: uppercase;
     }
 
     .brand-text span {
-      font-size: 12px;
+      font-size: 14px;
       color: var(--muted);
+      font-style: italic;
     }
 
     /* =========================
@@ -186,7 +197,7 @@
     }
 
     .btn {
-      display: block;
+      display: grid;
       width: 100%;
       text-align: center;
       padding: 12px;
@@ -196,12 +207,13 @@
       text-decoration: none;
       color: #f5f5f5;
       border: 2px outset rgba(255, 255, 255, .4);
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-2), var(--gold-3));
-      transition: background 0.7s ease, color 0.6s ease, border 0.3s ease;
+      background: linear-gradient(170deg, #eeb500, #ddcca9, #925700);
+      transition: color 0.6s ease, border 0.7s ease;
+      text-shadow: 0 0 5px black, 0 0 8px black;
     }
 
     .btn-primary {
-      display: block;
+      display: grid;
       width: 100%;
       text-align: center;
       padding: 12px;
@@ -217,26 +229,27 @@
 
 
     .btn:hover {
-      background: linear-gradient(135deg, var(--gold-1), var(--gold-2), var(--gold-3));
       color: black;
       border: 2px inset #e1d9d9;
+      background: linear-gradient(120deg, #030300 0%, #f6c506 50%, #030300 100%);
+      text-shadow: 0 0 5px white;
     }
 
     .btn.primary:hover {
       background: linear-gradient(120deg, #030300 0%, #f6c506 50%, #030300 100%);
       border: 2px inset #f7f0be54;
+      text-shadow: 0 0 5px white;
     }
-
 
     /* =========================
   HERO
   ========================= */
 
     .hero {
-      padding: 18px 14px;
+      padding: 20px 20px;
       border-radius: 22px;
       background: var(--panel);
-      border: 1px solid var(--stroke);
+      border: 2px outset rgba(212, 178, 106, 0.36);
       margin-bottom: 18px;
     }
 
@@ -245,13 +258,13 @@
       letter-spacing: .14em;
       text-transform: uppercase;
       opacity: .7;
+      font-style: italic;
     }
 
     h1 {
-      font-size: 26px;
+      font-size: 22px;
       line-height: 1.1;
-      margin: 10px 0;
-      font-family: "Lato" sans-serif;
+      margin: 5px auto;
     }
 
     .accent {
@@ -281,7 +294,8 @@
       display: grid;
       grid-template-columns: 1fr;
       gap: 10px;
-      margin: 18px 0;
+      margin: 18px 10px;
+      text-align: center;
     }
 
     .pill {
@@ -290,6 +304,10 @@
       background: rgba(0, 0, 0, .28);
       border: 3px inset rgba(212, 178, 106, 0.50);
       font-size: 13px;
+    }
+
+    .micro {
+      text-align: center;
     }
 
     /* =========================
@@ -301,6 +319,7 @@
       grid-template-columns: 1fr;
       gap: 14px;
       margin-top: 14px;
+      margin-bottom: 15px;
     }
 
     .card {
@@ -312,9 +331,16 @@
 
     .tag {
       font-size: 11px;
-      letter-spacing: .12em;
+      letter-spacing: .20em;
       text-transform: uppercase;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
+      font-weight: 600;
+    }
+
+    .depo-tag {
+      font-size: 25px;
+      font-family: "Lato", sans-serif;
+      font-style: italic;
     }
 
     /* =========================
@@ -323,22 +349,31 @@
 
     .prop {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 12px;
-      padding: 12px;
-      border-radius: 16px;
+      gap: 16px;
+      padding: 25px;
+      border-radius: 20px;
       background: rgba(0, 0, 0, .22);
-      border: 1px solid rgba(212, 178, 106, .16);
+      border: 3px outset rgba(212, 178, 106, 0.45);
+      margin-bottom: 20px;
+      flex-direction: column;
     }
 
     .prop-media {
-      min-height: 160px;
-      border-radius: 14px;
       background: #111;
       display: grid;
       place-items: center;
       font-size: 12px;
       opacity: .7;
+      max-width: 100%;
+      width: auto;
+    }
+
+    .prop-media img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      border: 3px inset white;
+      width: auto;
     }
 
     .prop-title {
@@ -346,7 +381,7 @@
     }
 
     .prop-meta {
-      font-size: 13px;
+      font-size: 16px;
       opacity: .7;
     }
 
@@ -363,6 +398,144 @@
       flex-direction: column;
       gap: 10px;
       margin-top: 12px;
+    }
+
+    .prop-body {
+      max-width: 100%;
+      width: auto;
+      display: grid;
+      justify-content: center;
+    }
+
+    /* =========================
+  MODAL STYLES - FIXED
+  ========================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      overflow: auto;
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 2% auto;
+      padding: 20px;
+      background-color: #1a1a1a;
+      width: 90%;
+      max-width: 1200px;
+      border-radius: 12px;
+      border: 2px solid var(--gold-2);
+    }
+
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: #fff;
+      font-size: 36px;
+      font-weight: bold;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s ease;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: var(--gold-2);
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .modal-images {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 20px;
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+
+    .modal-images img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 8px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .modal-images img:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(212, 178, 106, 0.3);
+    }
+
+    .modal-fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      cursor: pointer;
+    }
+
+    .modal-fullscreen img {
+      max-width: 90%;
+      max-height: 90%;
+      object-fit: contain;
+      border-radius: 8px;
+    }
+
+    /* Mobile-first: adaptação para telas pequenas */
+    @media (max-width: 600px) {
+      .modal-content {
+        width: 95%;
+        margin: 5% auto;
+        padding: 15px;
+      }
+
+      .modal-images img {
+        height: 180px;
+      }
+
+      .close {
+        font-size: 28px;
+        right: 10px;
+      }
+    }
+
+    /* Para telas médias (tablets) */
+    @media (min-width: 601px) and (max-width: 1024px) {
+      .modal-content {
+        width: 85%;
+      }
+
+      .modal-images {
+        grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+      }
+    }
+
+    /* Para telas grandes (desktop) */
+    @media (min-width: 1025px) {
+      .modal-content {
+        width: 80%;
+      }
+
+      .modal-images {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      }
     }
 
     /* =========================
@@ -385,12 +558,6 @@
 
     @media (min-width: 960px) {
 
-      .creci h1 {
-        font-size: 18px;
-        margin: 2px;
-        line-height: 1.3;
-      }
-
       .wrap {
         max-width: 1150px;
         margin: 0 auto;
@@ -404,14 +571,16 @@
       .brand {
         flex-direction: row;
         text-align: left;
+        width: auto;
       }
 
       .nav {
         flex-direction: row;
+        width: 100%;
       }
 
       .btn {
-        width: auto;
+        align-content: center;
       }
 
       .hero-cta {
@@ -423,30 +592,70 @@
       }
 
       .grid {
-        grid-template-columns: 1.2fr 0.8fr;
+        display: flex;
+        flex-direction: column;
       }
 
-      .prop {
-        grid-template-columns: 160px 1fr;
+      .props {
+        max-width: 100vw;
+        width: auto;
       }
 
       .prop-actions {
-        flex-direction: row;
+        display: flex;
+        gap: 10px;
+        max-width: 470px;
+        width: 470px;
+        height: auto;
+        flex-direction: column;
+        place-items: center;
+      }
+
+      .prop {
+        grid-template-columns: 1fr 1.2fr;
+        align-items: center;
+      }
+
+      .prop-media img {
+        max-width: 80%;
+        height: auto;
+        border-radius: 15px;
+        border: 3px inset white;
+        width: 800px;
+      }
+
+      .prop-title {
+        font-weight: 800;
+        font-size: 30px;
+        width: auto;
+      }
+
+      .prop-meta {
+        font-size: 20px;
+        opacity: 0.7;
+        font-family: "Lato", sans-serif;
+        font-style: italic;
+      }
+
+      .prop-price {
+        font-weight: 800;
+        background: linear-gradient(110deg, var(--gold-1), var(--gold-2), #4a3413);
+        background-clip: text;
+        color: transparent;
+        font-size: 25px;
+        margin: 20px 0;
       }
     }
 
     @media (min-width: 850px) {
       .logo {
-        min-width: 100%;
         padding: 0;
-        height: 40vh;
         width: auto;
-        margin-bottom: 50px;
+        min-height: 100%;
       }
 
       .logo img {
         max-width: 100%;
-        max-height: 400px;
         display: block;
       }
     }
@@ -465,7 +674,9 @@
     <!-- CARD PRINCIPAL (em cima da linha dourada) -->
     <header class="brand-card" id="contato">
       <div class="brand">
-        <div class="mark">JP</div>
+        <div class="mark">
+          <img src="./assets/jp-icon.png" alt="JP Icon" />
+        </div>
 
         <div class="brand-text">
           <strong>Jhonatan Peterson</strong>
@@ -517,28 +728,27 @@
     <section class="grid" id="propriedades">
       <div class="card">
         <div class="tag">Propriedades em destaque</div>
-        <h2>Curadoria (amostra)</h2>
-        <p style="margin:0 0 12px; color: rgba(242,242,242,.70); font-size: 13px; line-height: 1.6;">
-          2–3 opções para você sentir o padrão. Clique para ver detalhes e fotos.
-        </p>
+        <h2>Curadoria</h2>
+        <p>Clique para ver detalhes e fotos.</p>
 
         <div class="props">
           <!-- Card 1 -->
           <article class="prop">
-            <div class="prop-media">Foto</div>
+            <div class="prop-media">
+              <img src="./assets/FAZENDA/capafazenda.jpeg" alt="capa fazenda" />
+            </div>
             <div class="prop-body">
-              <div class="prop-title">Apartamento — 3 suítes — 185m²</div>
-              <div class="prop-meta">Vila Nova • 2 vagas • Vista livre</div>
-              <div class="prop-price">R$ 2.450.000</div>
+              <h1 class="prop-title">FAZENDA DE ALTO PADRÃO A VENDA EM ITAPETININGA-SP</h1>
+              <div class="prop-meta">Aptidão: Agricultura e Pecuária de Elite</div>
+              <h2 class="prop-price">R$ 60.000.000,00</h2>
               <div class="prop-actions">
                 <a class="btn primary"
                   href="https://wa.me/5511993747595?text=Quero%20detalhes%20do%20Apartamento%203%20su%C3%ADtes%20185m%C2%B2%20(Vila%20Nova)"
                   target="_blank" rel="noopener noreferrer">
                   Solicitar detalhes
                 </a>
-                <a class="btn" href="#"
-                  onclick="alert('Aqui você pode linkar para uma página /propriedades/apto-185 ou abrir um modal.'); return false;">
-                  Ver mais
+                <a class="btn" href="#" onclick="openModal('fazenda'); return false;">
+                  Ver mais fotos
                 </a>
               </div>
             </div>
@@ -546,19 +756,20 @@
 
           <!-- Card 2 -->
           <article class="prop">
-            <div class="prop-media">Foto</div>
+            <div class="prop-media">
+              <img src="./assets/MORADADOSOL2/moradadosol2-1.jpeg" alt="Morada do Sol 2" />
+            </div>
             <div class="prop-body">
-              <div class="prop-title">Casa — 4 dormitórios — 320m²</div>
-              <div class="prop-meta">Condomínio fechado • Piscina • Gourmet</div>
-              <div class="prop-price">R$ 3.980.000</div>
+              <h1 class="prop-title">MANSÃO À VENDA – CONDOMÍNIO MORADA DO SOL</h1>
+              <div class="prop-meta">Design moderno e decoração completa – é só entrar e morar</div>
+              <h2 class="prop-price">R$ 2.000.000,00</h2>
               <div class="prop-actions">
                 <a class="btn primary"
                   href="https://wa.me/5511993747595?text=Quero%20detalhes%20da%20Casa%204%20dormit%C3%B3rios%20320m%C2%B2%20(Condom%C3%ADnio%20fechado)"
                   target="_blank" rel="noopener noreferrer">
                   Solicitar detalhes
                 </a>
-                <a class="btn" href="#"
-                  onclick="alert('Linke para detalhes/galeria desta propriedade.'); return false;">
+                <a class="btn" href="#" onclick="openModal('morada-do-sol2'); return false;">
                   Ver mais
                 </a>
               </div>
@@ -567,80 +778,287 @@
 
           <!-- Card 3 (opcional) -->
           <article class="prop">
-            <div class="prop-media">Foto</div>
+            <div class="prop-media">
+              <img src="./assets/MORADADOSOL1/moradadosolcapa.jpeg" alt="Morada do Sol 1" />
+            </div>
             <div class="prop-body">
-              <div class="prop-title">Cobertura — 2 suítes — 160m²</div>
-              <div class="prop-meta">Terraço • Jacuzzi • 2 vagas</div>
-              <div class="prop-price">R$ 2.890.000</div>
+              <h1 class="prop-title">EXCLUSIVIDADE NO RESIDENCIAL MORADA DO SOL</h1>
+              <div class="prop-meta">Alto padrão, conforto e vista espetacular a apenas 40 minutos de São Paulo</div>
+              <h2 class="prop-price">R$ 3.200.000,00</h2>
               <div class="prop-actions">
                 <a class="btn primary"
                   href="https://wa.me/5511993747595?text=Quero%20detalhes%20da%20Cobertura%202%20su%C3%ADtes%20160m%C2%B2"
                   target="_blank" rel="noopener noreferrer">
                   Solicitar detalhes
                 </a>
-                <a class="btn" href="#" onclick="alert('Você pode abrir um modal aqui.'); return false;">
-                  Ver mais
+                <a class="btn" href="#" onclick="openModal('morada-do-sol'); return false;">
+                  Ver mais fotos
                 </a>
               </div>
             </div>
           </article>
         </div>
       </div>
-
-      <div class="card">
-        <div class="tag">Atalho rápido</div>
-        <h2>Quer a lista completa?</h2>
-        <p class="quote">
-          Me diga bairro + metragem + faixa de valor. Eu retorno com as melhores opções disponíveis.
-        </p>
-        <a class="btn primary"
-          href="https://wa.me/5511993747595?text=Quero%20a%20lista%20completa%20de%20propriedades.%20Meu%20perfil%3A%20"
-          target="_blank" rel="noopener noreferrer" style="margin-top: 12px; display:inline-block;">
-          Pedir lista completa no WhatsApp
-        </a>
-      </div>
     </section>
 
-    </section>
+
+    <div class="card">
+      <div class="tag">Atalho rápido</div>
+      <h2>Quer a lista completa?</h2>
+      <p>Me diga bairro + metragem + faixa de valor. Eu retorno com as melhores opções disponíveis.</p>
+      <a class="btn primary"
+        href="https://wa.me/5511993747595?text=Quero%20a%20lista%20completa%20de%20propriedades.%20Meu%20perfil%3A%20"
+        target="_blank" rel="noopener noreferrer" style="margin-top: 12px; display:inline-block;">
+        Pedir lista completa no WhatsApp
+      </a>
+    </div>
 
     <section class="grid" id="diferenciais">
       <div class="card">
         <div class="tag">O que você recebe</div>
-        <h2>Processo enxuto. Experiência premium. Resultado.</h2>
+        <h1>Processo enxuto. Experiência premium. Resultado.</h1>
         <ul class="list">
-          <li><span class="dot"></span><span><strong>Briefing inteligente:</strong> alinhamento de perfil, região,
+          <li><span class="dot"></span><span><strong>Briefing inteligente:</strong> alinhamento de perfil,
+              região,
               orçamento e timing.</span></li>
-          <li><span class="dot"></span><span><strong>Seleção estratégica:</strong> opções filtradas por liquidez,
+          <li><span class="dot"></span><span><strong>Seleção estratégica:</strong> opções filtradas por
+              liquidez,
               qualidade e custo-benefício real.</span></li>
-          <li><span class="dot"></span><span><strong>Visitas objetivas:</strong> roteiro eficiente para decidir com
+          <li><span class="dot"></span><span><strong>Visitas objetivas:</strong> roteiro eficiente para
+              decidir com
               confiança.</span></li>
-          <li><span class="dot"></span><span><strong>Fechamento seguro:</strong> suporte na negociação e no caminho até
+          <li><span class="dot"></span><span><strong>Fechamento seguro:</strong> suporte na negociação e no
+              caminho até
               a assinatura.</span></li>
         </ul>
       </div>
 
       <div class="card">
-        <div class="tag">Prova</div>
-        <h2>Depoimento (exemplo)</h2>
-        <p class="quote">
-          “A curadoria economizou semanas. Visitamos poucas opções, todas certeiras.
-          Negociação firme e transparente — fechamos com segurança.”
-        </p>
-        <p style="margin:10px 0 0; color: rgba(242,242,242,.62); font-size: 12px;">
-          Resultado: <span style="color: var(--ok); font-weight: 800;">mais confiança</span> + <span
-            style="color: rgba(255,242,201,.92); font-weight: 800;">menos atrito</span>.
-        </p>
+        <h2 class="depo-tag">• Depoimentos</h2>
+        <div class="card">
+          <strong class="quote">
+            "A curadoria economizou semanas. Visitamos poucas opções, todas certeiras.
+            Negociação firme e transparente — fechamos com segurança."
+          </strong>
+        </div>
+        <div class="card"><strong class="quote">
+            Fazer negócios com o Jhonatan é sempre a melhor escolha! É o segundo imóvel que compramos com
+            ele para
+            investimento e ele sempre é certeiro!
+            Sem dúvidas o melhor corretor de SP!
+          </strong></div>
+        <div class="card"><strong class="quote">
+            Com o Jhonatan nós sempre fechamos negócio sem medo e com a certeza de que é boa escolha!
+            Obrigado
+            por nos ajudar mais uma vez a encontrar o lar da nossa família!
+          </strong></div>
       </div>
-    </section>
+  </div>
+  </div>
+  </section>
 
-    <div class="foot">
-      <a class="back" href="#" onclick="return false;">← voltar</a>
-      <span>Jhonatan Peterson • Imobiliária de Alto Padrão • <span
-          style="color: rgba(255,242,201,.90); font-weight:800;">Golden premium</span>.</span>
+  <div class="foot">
+    <a class="back" href="#" onclick="return false;">← voltar</a>
+    <span>Jhonatan Peterson • Imobiliária de Alto Padrão • <span
+        style="color: rgba(255,242,201,.90); font-weight:800;">Golden premium</span>.</span>
+  </div>
+  </div>
+  </div>
+  </div>
+
+  <!-- Modal Structure - Moved outside nested containers -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle" style="color: #fff; text-align: center; margin-bottom: 20px;"></h2>
+      <div class="modal-images" id="modalImages">
+        <!-- Images will be populated by JavaScript -->
+      </div>
     </div>
   </div>
+
+  <!-- Fullscreen Image Viewer -->
+  <div id="fullscreenViewer" class="modal-fullscreen" style="display: none;">
+    <img id="fullscreenImage" src="" alt="Fullscreen" />
   </div>
-  </div>
+
+  <script>
+    // Property data - easily expandable
+    const propertyData = {
+      'morada-do-sol': {
+        title: 'Morada do Sol - Galeria de Fotos',
+        images: [
+          './assets/MORADADOSOL1/moradadosolcapa.jpeg',
+          './assets/MORADADOSOL1/moradadosol1-1.jpeg',
+          './assets/MORADADOSOL1/moradadosol2.jpeg',
+          './assets/MORADADOSOL1/moradadosol3.jpeg',
+          './assets/MORADADOSOL1/moradadosol4.jpeg',
+          './assets/MORADADOSOL1/moradadosol5.jpeg',
+          './assets/MORADADOSOL1/moradadosol6.jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.03 (5).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.03 (6).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (2).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (3).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04 (4).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.04.jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (1).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (2).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (3).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05 (4).jpeg',
+          './assets/MORADADOSOL1/WhatsApp Image 2026-02-02 at 19.48.05.jpeg'
+        ]
+      },
+      'morada-do-sol2': {
+        title: 'Morada do Sol 2 - Galeria de Fotos',
+        images: [
+          './assets/MORADADOSOL2/moradadosol2-1.jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (1).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (2).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37 (3).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.37.jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (1).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (2).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (3).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (4).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38 (5).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.38.jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (1).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (2).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (3).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (4).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39 (5).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.39.jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (1).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (2).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (3).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40 (4).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.40.jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (1).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (2).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (3).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (4).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (5).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41 (6).jpeg',
+          './assets/MORADADOSOL2/WhatsApp Image 2026-02-02 at 19.48.41.jpeg'
+        ]
+      },
+      'fazenda': {
+        title: 'Fazenda de Alto Padrão - Galeria de Fotos',
+        images: [
+          './assets/FAZENDA/fazenda1.jpeg',
+          './assets/FAZENDA/fazenda2.jpeg',
+          './assets/FAZENDA/fazenda3.jpeg',
+          './assets/FAZENDA/fazenda4.jpeg',
+          './assets/FAZENDA/fazenda5.jpeg',
+          './assets/FAZENDA/fazenda6.jpeg',
+          './assets/FAZENDA/fazenda7.jpeg',
+          './assets/FAZENDA/fazenda8.jpeg',
+          './assets/FAZENDA/fazenda9.jpeg',
+          './assets/FAZENDA/fazenda10.jpeg',
+          './assets/FAZENDA/fazenda11.jpeg',
+          './assets/FAZENDA/fazenda12.jpeg',
+          './assets/FAZENDA/fazenda13.jpeg',
+          './assets/FAZENDA/fazenda14.jpeg',
+          './assets/FAZENDA/fazenda15.jpeg',
+          './assets/FAZENDA/fazenda16.jpeg',
+          './assets/FAZENDA/fazenda17.jpeg',
+          './assets/FAZENDA/fazenda18.jpeg',
+          './assets/FAZENDA/fazenda19.jpeg',
+          './assets/FAZENDA/fazenda20.jpeg',
+          './assets/FAZENDA/fazenda21.jpeg',
+          './assets/FAZENDA/fazenda22.jpeg'
+        ]
+      }
+    };
+
+    // DOM Elements
+    const modal = document.getElementById('myModal');
+    const modalImagesContainer = document.getElementById('modalImages');
+    const modalTitle = document.getElementById('modalTitle');
+    const closeBtn = document.querySelector('.close');
+    const fullscreenViewer = document.getElementById('fullscreenViewer');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+
+    // Function to open modal with specific property
+    function openModal(propertyId) {
+      const property = propertyData[propertyId];
+      if (!property) {
+        console.error('Property not found:', propertyId);
+        return;
+      }
+
+      // Set title
+      modalTitle.textContent = property.title;
+
+      // Clear previous images
+      modalImagesContainer.innerHTML = '';
+
+      // Add images to modal
+      property.images.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = property.title + ' - Imagem ' + (index + 1);
+        img.loading = 'lazy'; // Lazy loading for performance
+
+        // Add click event for fullscreen view
+        img.addEventListener('click', () => openFullscreen(src));
+
+        modalImagesContainer.appendChild(img);
+      });
+
+      // Show modal
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    }
+
+    // Function to close modal
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto'; // Restore scrolling
+    }
+
+    // Function to open fullscreen image viewer
+    function openFullscreen(imageSrc) {
+      fullscreenImage.src = imageSrc;
+      fullscreenViewer.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close fullscreen viewer
+    function closeFullscreen() {
+      fullscreenViewer.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on button click
+    closeBtn.addEventListener('click', closeModal);
+
+    // Close modal on click outside content
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+      if (event.target === fullscreenViewer) {
+        closeFullscreen();
+      }
+    });
+
+    // Close modal on Escape key
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (fullscreenViewer.style.display === 'flex') {
+          closeFullscreen();
+        } else if (modal.style.display === 'block') {
+          closeModal();
+        }
+      }
+    });
+
+    // Close fullscreen on click
+    fullscreenViewer.addEventListener('click', closeFullscreen);
+
+    console.log('Modal system initialized successfully');
+  </script>
 </body>
 
 </html>
