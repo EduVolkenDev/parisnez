@@ -1,0 +1,4 @@
+- [x] Atualizar properties.json para usar descrições completas de propertyData.json em meta
+- [ ] Remover campo description de propertyData.json para evitar duplicação
+- [x] Atualizar index.html para usar descrições de properties.json no modal
+- [ ] Testar o site para verificar se as descrições aparecem corretamente

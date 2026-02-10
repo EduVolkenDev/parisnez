@@ -456,12 +456,17 @@
     }
 
     .card {
-      padding: 16px;
+      padding: 15px;
       border-radius: 18px;
       background: rgba(0, 0, 0, .26);
       border: 2px outset rgba(212, 178, 106, 0.36);
       margin-bottom: 15px;
       backdrop-filter: blur(3px);
+      max-width: 100%;
+      width: auto;
+      margin: auto;
+      height: auto;
+      min-width: 0;
     }
 
     .tag {
@@ -723,6 +728,11 @@
     /* =========================
   DESKTOP (>= 960px)
   ========================= */
+    @media (max-width:959px) {
+      .prop-meta {
+        display: none;
+      }
+    }
 
     @media (min-width: 960px) {
 
@@ -803,6 +813,7 @@
         opacity: 0.7;
         font-family: "Lato", sans-serif;
         font-style: italic;
+        display: none;
       }
 
       .prop-price {
@@ -810,8 +821,9 @@
         background: linear-gradient(110deg, var(--gold-1), var(--gold-2), #4a3413);
         background-clip: text;
         color: transparent;
-        font-size: 25px;
+        font-size: 35px;
         margin: 20px 0;
+        font-style: italic;
       }
     }
 
@@ -1046,10 +1058,15 @@
     // Property data - easily expandable
     <script>
       let propertyData = {};
+      let propertyMap = {};
 
       async function boot() {
         const res = await fetch("./data/propertyData.json?v=" + Date.now(), { cache: "no-store" });
         propertyData = await res.json();
+
+        const res2 = await fetch("./data/properties.json?v=" + Date.now(), { cache: "no-store" });
+        const properties = await res2.json();
+        properties.forEach(p => propertyMap[p.id] = p);
 
         initGallery();
       }
@@ -1084,7 +1101,7 @@
         modalTitle.textContent = property.title;
 
         // Set description
-        modalDescription.textContent = property.description || '';
+        modalDescription.textContent = propertyMap[propertyId] ? propertyMap[propertyId].meta || '' : '';
 
         // Clear previous images
         modalImagesContainer.innerHTML = '';
