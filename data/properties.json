@@ -14,7 +14,7 @@
     "category": "Mansão",
     "meta": "MANSÃO À VENDA – CONDOMÍNIO MORADA DO SOL\nValor: R$ 2.000.000,00\n\nVerdadeira joia imobiliária, localizada no melhor terreno do Condomínio Morada do Sol, unindo sofisticação, conforto e tecnologia.\n\nDIFERENCIAIS: Casa totalmente plana, mobília completa, 2 quartos (1 suíte master com closet), ar-condicionado, janelas blackout, cozinha planejada.\n\nLAZER: Piscina aquecida com praia e hidromassagem, área gourmet completa, jardim lateral.\n\nESTRUTURA: Garagem coberta para 2 carros + 2 vagas descobertas, energia fotovoltaica, carregador para carro elétrico.\n\nCONDOMÍNIO: Segurança 24h, trilhas ecológicas, Smart Market interno.\n\nAceita financiamento e permuta de até 50% do valor.\nApenas 40 minutos de São Paulo.",
     "price": "R$ 2.000.000,00",
-    "coverImage": "./assets/EMILCE_MORADA_DO_SOL_2.0M/1.1.jpeg",
+    "coverImage": "./assets/properties/casa/EMILCE_MORADA_DO_SOL_2.0M/1.1.jpeg",
     "whatsappMessage": "Quero detalhes da Mansão no Morada do Sol"
   },
   {
@@ -23,7 +23,7 @@
     "category": "Casa",
     "meta": "Alto padrão, conforto e vista espetacular a apenas 40 minutos de São Paulo.",
     "price": "R$ 3.200.000,00",
-    "coverImage": "./assets/EIJI_MORADA_DO_SOL_3-2M/eiji1.jpeg",
+    "coverImage": "./assets/properties/casa/EIJI_MORADA_DO_SOL_3-2M/eiji1.jpeg",
     "whatsappMessage": "Quero detalhes da Casa no Morada do Sol"
   },
   {
@@ -32,7 +32,7 @@
     "category": "Casa",
     "meta": "Casa à Venda em Terra Preta – Vista Deslumbrante para a Pedra Vermelha\n\n2 dormitórios (1 suíte), sala, cozinha planejada, área gourmet completa, lavanderia, piscina, garagem para até 5 carros.\n\nTerreno: 250 m² | Área construída: 80 m²\n\nAceita financiamento bancário.\nLinda vista para a Pedra Vermelha com pôr do sol incrível.",
     "price": "R$ 550.000,00",
-    "coverImage": "./assets/PEDRO_SUN_VALLEY_550MIL/1.3.jpeg",
+    "coverImage": "./assets/properties/casa/PEDRO_SUN_VALLEY_550MIL/1.3.jpeg",
     "whatsappMessage": "Quero detalhes da Casa em Terra Preta"
   },
   {
@@ -41,7 +41,7 @@
     "category": "Casa",
     "meta": "Casa moderna em reta final de acabamento no Mato Dentro.\n\n3 dormitórios, terreno 250 m², área construída 70 m², garagem para 3 veículos.\nAmbiente arejado, muita luz natural, vizinhança calma e segura.\nVista aberta e pôr do sol encantador.\n\nAceita Financiamento Bancário.",
     "price": "R$ 390.000,00",
-    "coverImage": "./assets/RENATO_MATO_DENTRO_390MIL/RE1.jpeg",
+    "coverImage": "./assets/properties/casa/RENATO_MATO_DENTRO_390MIL/RE1.jpeg",
     "whatsappMessage": "Quero detalhes da Casa em Mato Dentro"
   },
   {
@@ -50,7 +50,7 @@
     "category": "Chácara",
     "meta": "Chácara na Associação PIC NIC – Mairiporã (35 km de SP)\n\nTerreno: 2.000 m² | Área construída: 300 m² (averbada)\n\n3 dormitórios (1 suíte), 1 banheiro social, sala, cozinha com cooktop, quarto adicional externo, piscina 7x3m, churrasqueira, terreno arborizado.\n\nAceita financiamento e imóvel de menor valor como parte de pagamento.\nAcesso fácil, 4,6 km de estrada de terra.",
     "price": "R$ 850.000,00",
-    "coverImage": "./assets/MARLENE_PICNIC_850MIL/imagecover.jpeg",
+    "coverImage": "./assets/properties/chacara/MARLENE_PICNIC_850MIL/imagecover.jpeg",
     "whatsappMessage": "Quero detalhes da Chácara PIC NIC"
   },
   {
@@ -59,7 +59,7 @@
     "category": "Casa de Campo",
     "meta": "Casa de campo de padrão médio alto em Mogi das Cruzes. Ideal para quem busca tranquilidade e contato com a natureza.",
     "price": "R$ 800.000,00",
-    "coverImage": "./assets/DANIEL_MOGI_DAS_CRUZES_800MIL/DAN1.jpeg",
+    "coverImage": "./assets/properties/casa/DANIEL_MOGI_DAS_CRUZES_800MIL/DAN1.jpeg",
     "whatsappMessage": "Quero detalhes da Casa de Campo em Mogi das Cruzes"
   },
   {
@@ -68,7 +68,7 @@
     "category": "Casa Estilo Fazenda",
     "meta": "Casa Estilo Fazenda para Venda ou Locação – Mairiporã\n\nVenda: R$1.300.000,00 | Locação: R$8.000,00\nAceita Financiamento Bancário\n\nSuíte Master com banheira vitoriana, closet, sala com lareira, cozinha espaçosa, piscina, área gourmet integrada, 2 vagas de garagem com portão automático, amplo quintal com vista de tirar o fôlego.\n\nLocalização estratégica em Mairiporã.",
     "price": "R$ 1.300.000,00",
-    "coverImage": "./assets/ANDRE_MATO_DENTRO_1-3M/WhatsApp Image 2026-02-09 at 20.16.48.jpeg",
+    "coverImage": "./assets/properties/casa/ANDRE_MATO_DENTRO_1-3M/WhatsApp Image 2026-02-09 at 20.16.48.jpeg",
     "whatsappMessage": "Quero detalhes da Casa Estilo Fazenda em Mairiporã"
   },
   {
@@ -77,7 +77,7 @@
     "category": "Chácara",
     "meta": "Imóvel à Venda no Condomínio Serros Verde – Serra da Cantareira\n\nTerreno: 1.200 m² | Condomínio fechado, totalmente murada.\nVista panorâmica 360° da Serra da Cantareira.\nPiscina, área gourmet completa, espaço com fogueira, edícula, banheiro externo, área de refeições coberta.\n\nPerfeita para eventos e confraternizações.",
     "price": "R$ 790.000,00",
-    "coverImage": "./assets/ADRIANO_SERROS_VERDE_790MIL/1 (1).jpeg",
+    "coverImage": "./assets/properties/chacara/ADRIANO_SERROS_VERDE_790MIL/1 (1).jpeg",
     "whatsappMessage": "Quero detalhes da Chácara em Serros Verde"
   },
   {
@@ -86,7 +86,7 @@
     "category": "Casa",
     "meta": "Casa Juana – Imóvel disponível. Entre em contato para mais detalhes.",
     "price": "Consulte",
-    "coverImage": "./assets/CASAJUANA/CASAJUANA1.jpeg",
+    "coverImage": "./assets/properties/casa/CASAJUANA/CASAJUANA1.jpeg",
     "whatsappMessage": "Quero detalhes da Casa Juana"
   },
   {
@@ -95,7 +95,7 @@
     "category": "Casa",
     "meta": "Imóvel de alto padrão em condomínio fechado. Entre em contato para mais informações.",
     "price": "R$ 2.990.000,00",
-    "coverImage": "./assets/CONDOMINIO 2.990M MAK/1.jpeg",
+    "coverImage": "./assets/properties/casa/CONDOMINIO 2.990M MAK/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel em Condomínio R$ 2.990.000"
   },
   {
@@ -104,7 +104,7 @@
     "category": "Chácara",
     "meta": "Imóvel em Igaratá. Entre em contato para mais detalhes e agende sua visita.",
     "price": "R$ 3.200.000,00",
-    "coverImage": "./assets/IGARATA 3.2M MARLENE/1.jpeg",
+    "coverImage": "./assets/properties/chacara/IGARATA 3.2M MARLENE/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel em Igaratá"
   },
   {
@@ -113,7 +113,7 @@
     "category": "Casa",
     "meta": "Imóvel no Jardim Prince. Entre em contato para mais detalhes.",
     "price": "R$ 775.000,00",
-    "coverImage": "./assets/JARDIM PRINCE 775MIL LOURDES/1.jpeg",
+    "coverImage": "./assets/properties/casa/JARDIM PRINCE 775MIL LOURDES/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel no Jardim Prince"
   },
   {
@@ -122,7 +122,7 @@
     "category": "Casa",
     "meta": "Imóvel na Serra da Mantiqueira. Entre em contato para mais detalhes.",
     "price": "R$ 650.000,00",
-    "coverImage": "./assets/MANTIQUEIRA 1 - 650 MIL MILIE/1.jpeg",
+    "coverImage": "./assets/properties/casa/MANTIQUEIRA 1 - 650 MIL MILIE/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel na Mantiqueira"
   },
   {
@@ -131,7 +131,7 @@
     "category": "Casa",
     "meta": "Imóvel no condomínio Morada do Sol. Entre em contato para mais detalhes.",
     "price": "Consulte",
-    "coverImage": "./assets/MORADADOSOL1/moradadosolcapa.jpeg",
+    "coverImage": "./assets/properties/casa/MORADADOSOL1/moradadosolcapa.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel no Morada do Sol (Opção 1)"
   },
   {
@@ -140,7 +140,7 @@
     "category": "Casa",
     "meta": "Imóvel no condomínio Morada do Sol. Entre em contato para mais detalhes.",
     "price": "Consulte",
-    "coverImage": "./assets/MORADADOSOL2/moradadosol2-1.jpeg",
+    "coverImage": "./assets/properties/casa/MORADADOSOL2/moradadosol2-1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel no Morada do Sol (Opção 2)"
   },
   {
@@ -149,7 +149,7 @@
     "category": "Casa",
     "meta": "Imóvel no Sol Nascente. Entre em contato para mais detalhes.",
     "price": "R$ 390.000,00",
-    "coverImage": "./assets/SOL NASCENTE 390MIL MILIE/1.jpeg",
+    "coverImage": "./assets/properties/casa/SOL NASCENTE 390MIL MILIE/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel no Sol Nascente"
   },
   {
@@ -158,7 +158,7 @@
     "category": "Casa",
     "meta": "Imóvel em Terra Preta. Entre em contato para mais detalhes.",
     "price": "R$ 1.300.000,00",
-    "coverImage": "./assets/TERRA PRETA 1.3M MAK/1.jpeg",
+    "coverImage": "./assets/properties/casa/TERRA PRETA 1.3M MAK/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel em Terra Preta R$ 1.300.000"
   },
   {
@@ -167,7 +167,7 @@
     "category": "Casa",
     "meta": "Imóvel no Vem Viver. Entre em contato para mais detalhes.",
     "price": "R$ 660.000,00",
-    "coverImage": "./assets/VEM VIVER 660MIL MAK/1.jpeg",
+    "coverImage": "./assets/properties/casa/VEM VIVER 660MIL MAK/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel no Vem Viver R$ 660.000"
   },
   {
@@ -176,7 +176,7 @@
     "category": "Casa",
     "meta": "Imóvel no Vem Viver. Entre em contato para mais detalhes.",
     "price": "R$ 790.000,00",
-    "coverImage": "./assets/VEM VIVER 790MIL RICARDO/1.jpeg",
+    "coverImage": "./assets/properties/casa/VEM VIVER 790MIL RICARDO/1.jpeg",
     "whatsappMessage": "Quero detalhes do Imóvel no Vem Viver R$ 790.000"
   }
 ]
