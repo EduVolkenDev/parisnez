@@ -1,0 +1,1673 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Jhonatan Peterson — Imobiliária de Alto Padrão</title>
+  <meta name="description" content="Imóveis de alto padrão com curadoria, estratégia e atendimento premium." />
+  <link rel="icon" type="image/png" href="./assets/ui/favicon-96x96.png" sizes="96x96" />
+  <link rel="icon" type="image/svg+xml" href="./assets/ui/favicon.svg" />
+  <link rel="shortcut icon" href="./assets/ui/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="JP IMÓVEIS" />
+  <link rel="manifest" href="./assets/ui/site.webmanifest" />
+
+  <style>
+    /* =========================
+  RESET + VARIÁVEIS
+  ========================= */
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("./assets-fonts/Poppins-Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("./assets-fonts/Poppins-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("./assets-fonts/Poppins-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Poppins";
+      src: url("./assets-fonts/Poppins-Bold.ttf") format("truetype");
+      font-weight: 700;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    /* === WORK SANS === */
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-Light.ttf") format("truetype");
+      font-weight: 300;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-Regular.ttf") format("truetype");
+      font-weight: 400;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-Medium.ttf") format("truetype");
+      font-weight: 500;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-SemiBold.ttf") format("truetype");
+      font-weight: 600;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-LightItalic.ttf") format("truetype");
+      font-weight: 300;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-Italic.ttf") format("truetype");
+      font-weight: 400;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    @font-face {
+      font-family: "Work Sans";
+      src: url("./assets-fonts/WorkSans-BlackItalic.ttf") format("truetype");
+      font-weight: 900;
+      font-style: italic;
+      font-display: swap;
+    }
+
+    :root {
+      --bg: #050507;
+      --panel: rgba(12, 12, 12, 0.62);
+      --stroke: rgba(212, 178, 106, 0.20);
+      --text: #f2f2f2;
+      --muted: rgba(242, 242, 242, 0.74);
+
+      --gold-1: #fff2c9;
+      --gold-2: #d4b26a;
+      --gold-3: #a9782d;
+      --gold-dark: #4a3413;
+
+      --ok: #34d399;
+      --shadow: rgba(0, 0, 0, 0.45);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", "Work Sans", system-ui, sans-serif;
+      font-weight: 400;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    body {
+      min-height: 100dvh;
+      overflow-x: hidden;
+      width: 100%;
+      background-size: cover;
+      background-position: center;
+      /* FIX: background-attachment: fixed causa bugs em iOS Safari — usar scroll */
+      background-attachment: scroll;
+      background-image: url("./assets/ui/imobiliariabg.webp");
+    }
+
+    /* FIX: Em dispositivos que suportam fixed sem bugs, mantém fixed */
+    @supports not (-webkit-overflow-scrolling: touch) {
+      body {
+        background-attachment: fixed;
+      }
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      font-family: "Poppins", "Work Sans", sans-serif;
+      font-weight: 700;
+      margin: 0;
+    }
+
+    p {
+      font-family: "Work Sans", sans-serif;
+      font-weight: 400;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.3s ease;
+    }
+
+    /* =========================
+  WRAPPER
+  ========================= */
+
+    .wrap {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 16px;
+    }
+
+    /* =========================
+  HEADER
+  ========================= */
+
+    .header {
+      background: rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      padding: 12px 16px;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid rgba(212, 178, 106, 0.15);
+    }
+
+    .nav-container {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-container .jp-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 500;
+      flex-shrink: 0;
+    }
+
+    .nav-container .jp-icon img {
+      width: 40px;
+      height: auto;
+      flex-shrink: 0;
+    }
+
+    /* FIX: Ocultar texto de boas-vindas em telas muito pequenas */
+    .nav-container .jp-icon span {
+      display: none;
+    }
+
+    @media (min-width: 480px) {
+      .nav-container .jp-icon span {
+        display: inline;
+      }
+    }
+
+    .nav-container nav {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+
+    .nav-container nav a {
+      color: #fff;
+      font-weight: 500;
+      font-size: 13px;
+      padding: 7px 12px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      white-space: nowrap;
+    }
+
+    .nav-container nav a:hover {
+      background: rgba(212, 178, 106, 0.2);
+      border-color: var(--gold-2);
+    }
+
+    /* =========================
+  LOGO + CRECI
+  ========================= */
+
+    .logo {
+      /* FIX: largura responsiva com max adequado */
+      width: 100%;
+      max-width: 700px;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+      border: 6px double #b4a981;
+      margin: 16px auto;
+      display: block;
+    }
+
+    .logo img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 10px;
+      border: 6px double rgb(204, 172, 69);
+      backdrop-filter: blur(5px) saturate(4);
+      -webkit-backdrop-filter: blur(5px) saturate(4);
+    }
+
+    /* =========================
+  BRAND CARD
+  ========================= */
+
+    .brand-card {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      padding: 20px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      margin-bottom: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .mark {
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 3px outset #f9e6b8;
+      padding: 10px;
+      background: black;
+      box-shadow: 0 0 20px inset black;
+      flex-shrink: 0;
+    }
+
+    .mark img {
+      width: 44px;
+      height: auto;
+    }
+
+    .brand-text {
+      text-align: center;
+    }
+
+    .brand-text strong {
+      font-size: 16px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--gold-1);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .brand-text span {
+      font-size: 12px;
+      color: var(--muted);
+      font-style: normal;
+    }
+
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    /* =========================
+  BUTTONS
+  ========================= */
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 20px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      color: #fff;
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      background: rgba(255, 255, 255, 0.08);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      white-space: nowrap;
+    }
+
+    .btn:hover {
+      background: rgba(255, 255, 255, 0.15);
+      border-color: var(--gold-2);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(212, 178, 106, 0.2);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-1), var(--gold-2), var(--gold-3));
+      color: #1a1a1a;
+      border: none;
+      font-weight: 700;
+    }
+
+    .btn-primary:hover {
+      background: linear-gradient(135deg, var(--gold-2), var(--gold-1), var(--gold-2));
+      box-shadow: 0 6px 20px rgba(212, 178, 106, 0.4);
+    }
+
+    /* =========================
+  HERO
+  ========================= */
+
+    .hero {
+      padding: 24px 16px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      margin-bottom: 16px;
+    }
+
+    .kicker {
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      opacity: 0.7;
+      color: var(--gold-2);
+      margin-bottom: 10px;
+    }
+
+    h1 {
+      font-size: clamp(24px, 5vw, 48px);
+      line-height: 1.25;
+      margin: 10px 0 16px;
+    }
+
+    .accent {
+      background: linear-gradient(110deg, var(--gold-1), var(--gold-2), var(--gold-3));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .lead {
+      font-size: 15px;
+      line-height: 1.7;
+      opacity: 0.85;
+      max-width: 700px;
+      margin-bottom: 16px;
+    }
+
+    .hero-cta {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 16px;
+    }
+
+    .hero-cta .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* =========================
+  PILLS / FEATURES
+  ========================= */
+
+    .pill-row {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 12px;
+      margin: 16px 0;
+    }
+
+    .pill {
+      padding: 16px;
+      border-radius: 14px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      font-size: 14px;
+      text-align: center;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: all 0.3s ease;
+    }
+
+    .pill:hover {
+      border-color: var(--gold-2);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .pill strong {
+      display: block;
+      color: var(--gold-1);
+      font-size: 15px;
+      margin-bottom: 6px;
+    }
+
+    .pill span {
+      opacity: 0.8;
+      font-size: 13px;
+    }
+
+    /* =========================
+  CARDS & SECTIONS
+  ========================= */
+
+    .card {
+      padding: 20px 16px;
+      border-radius: 20px;
+      background: rgba(0, 0, 0, 0.4);
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      margin-bottom: 16px;
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+    }
+
+    .tag {
+      font-size: 13px;
+      letter-spacing: 0.13em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      font-weight: 600;
+      color: var(--gold-2);
+      text-align: center;
+      padding: 8px 16px;
+      background: rgba(212, 178, 106, 0.1);
+      border-radius: 30px;
+      display: inline-block;
+      border: 1px solid rgba(249, 230, 184, 0.4);
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .section-title h2 {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .section-title p {
+      opacity: 0.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+  LIST STYLES
+  ========================= */
+
+    .list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0;
+    }
+
+    .list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    .list li:last-child {
+      border-bottom: none;
+    }
+
+    .dot {
+      width: 10px;
+      height: 10px;
+      min-width: 10px;
+      border-radius: 50%;
+      background: var(--gold-2);
+      margin-top: 7px;
+      box-shadow: 0 0 10px var(--gold-2);
+    }
+
+    .list li span {
+      line-height: 1.6;
+    }
+
+    .list li strong {
+      color: var(--gold-1);
+    }
+
+    /* =========================
+  TESTIMONIALS
+  ========================= */
+
+    .depo-tag {
+      font-size: 20px;
+      font-family: "Poppins", sans-serif;
+      margin-bottom: 16px;
+      color: var(--gold-1);
+    }
+
+    .quote {
+      display: block;
+      font-size: 14px;
+      line-height: 1.7;
+      padding: 16px;
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: 12px;
+      border-left: 3px solid var(--gold-2);
+      margin-bottom: 12px;
+      font-style: italic;
+    }
+
+    .quote:last-child {
+      margin-bottom: 0;
+    }
+
+    /* =========================
+  PROPERTIES
+  ========================= */
+
+    .props {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+
+    .prop {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 16px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .prop:hover {
+      border-color: var(--gold-2);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+    }
+
+    .prop-media {
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .prop-media img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 12px;
+      transition: transform 0.3s ease;
+      display: block;
+    }
+
+    .prop:hover .prop-media img {
+      transform: scale(1.03);
+    }
+
+    .prop-body {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .prop-title {
+      font-weight: 700;
+      font-size: 18px;
+      color: #fff;
+    }
+
+    .prop-meta {
+      font-size: 13px;
+      opacity: 0.7;
+      line-height: 1.5;
+    }
+
+    .prop-price {
+      font-weight: 700;
+      font-size: 22px;
+      background: linear-gradient(110deg, var(--gold-1), var(--gold-2), var(--gold-dark));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin: 4px 0;
+    }
+
+    /* FIX: Removido height: 5vh fixo e flex problemático */
+    .prop-actions {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 100%;
+      margin-top: 4px;
+    }
+
+    .prop-actions .btn {
+      width: 100%;
+      text-align: center;
+    }
+
+    /* =========================
+  CTA BOX
+  ========================= */
+
+    .cta-box {
+      position: relative;
+      overflow-x: hidden;
+    }
+
+    .cta-box::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.1) 0%, transparent 60%);
+      pointer-events: none;
+      animation: spotlight 10s infinite ease-in-out;
+    }
+
+    @keyframes spotlight {
+
+      0%,
+      100% {
+        background-position: 0% 0%;
+      }
+
+      25% {
+        background-position: 100% 0%;
+      }
+
+      50% {
+        background-position: 100% 100%;
+      }
+
+      75% {
+        background-position: 0% 100%;
+      }
+    }
+
+    /* =========================
+  FOOTER
+  ========================= */
+
+    .footer {
+      background: rgba(0, 0, 0, 0.6);
+      padding: 24px 16px;
+      text-align: center;
+      margin-top: 32px;
+      border-top: 1px solid rgba(212, 178, 106, 0.15);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--muted);
+      font-size: 13px;
+    }
+
+    .footer-links a:hover {
+      color: var(--gold-2);
+    }
+
+    .footer p {
+      color: var(--muted);
+      font-size: 12px;
+      opacity: 0.7;
+    }
+
+    .foot {
+      text-align: center;
+      font-size: 13px;
+      opacity: 0.6;
+      margin-top: 16px;
+    }
+
+    .back {
+      color: var(--gold-2);
+    }
+
+    /* =========================
+  MODAL STYLES
+  ========================= */
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 1000;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.92);
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .modal-content {
+      position: relative;
+      margin: 4% auto;
+      padding: 20px 16px;
+      background-color: rgba(20, 20, 20, 0.98);
+      width: 94%;
+      max-width: 1100px;
+      border-radius: 16px;
+      border: 1px solid rgba(249, 230, 184, 0.4);
+    }
+
+    .close {
+      position: absolute;
+      top: 12px;
+      right: 18px;
+      color: #fff;
+      font-size: 30px;
+      font-weight: 300;
+      cursor: pointer;
+      z-index: 1001;
+      transition: color 0.3s ease;
+      line-height: 1;
+    }
+
+    .close:hover,
+    .close:focus {
+      color: var(--gold-2);
+    }
+
+    .modal h2 {
+      color: #fff;
+      text-align: center;
+      margin-bottom: 16px;
+      font-size: 20px;
+      padding-right: 30px; /* evitar sobreposição com o X */
+    }
+
+    .modal p {
+      color: rgba(255, 255, 255, 0.8);
+      white-space: pre-line;
+      margin-bottom: 20px;
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .modal-images {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .modal-images img {
+      width: 100%;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: block;
+    }
+
+    .modal-images img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 8px 24px rgba(212, 178, 106, 0.25);
+    }
+
+    .modal-fullscreen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 2000;
+      cursor: pointer;
+    }
+
+    .modal-fullscreen.active {
+      display: flex;
+    }
+
+    .modal-fullscreen img {
+      max-width: 90%;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 8px;
+      cursor: default;
+      user-select: none;
+    }
+
+    /* =========================
+  FULLSCREEN NAVIGATION
+  ========================= */
+
+    .fs-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      font-size: 32px;
+      line-height: 1;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2001;
+      border-radius: 50%;
+      transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .fs-arrow:hover {
+      background: rgba(212, 178, 106, 0.5);
+      border-color: var(--gold-2);
+    }
+
+    .fs-prev {
+      left: 10px;
+    }
+
+    .fs-next {
+      right: 10px;
+    }
+
+    .fs-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: rgba(0, 0, 0, 0.55);
+      color: #fff;
+      border: 1px solid rgba(249, 230, 184, 0.4);
+      font-size: 18px;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 2001;
+      border-radius: 50%;
+      transition: background 0.2s ease, border-color 0.2s ease;
+      user-select: none;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .fs-close:hover {
+      background: rgba(212, 178, 106, 0.5);
+      border-color: var(--gold-2);
+    }
+
+    #descriptionModal .modal-content {
+      max-width: 600px;
+    }
+
+    /* =========================
+  BACK TO TOP
+  ========================= */
+
+    .back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: linear-gradient(135deg, var(--gold-2), var(--gold-3));
+      color: #000;
+      border: none;
+      border-radius: 50%;
+      width: 46px;
+      height: 46px;
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 4px 16px rgba(212, 178, 106, 0.4);
+      transition: all 0.3s ease;
+      z-index: 1001;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .back-to-top:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 24px rgba(212, 178, 106, 0.5);
+    }
+
+    .back-to-top.visible {
+      display: flex;
+    }
+
+    /* =========================
+  RESPONSIVE — TABLET (≥ 600px)
+  ========================= */
+
+    @media (min-width: 600px) {
+      .wrap {
+        padding: 20px;
+      }
+
+      .hero {
+        padding: 28px 24px;
+      }
+
+      .hero-cta {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .hero-cta .btn {
+        width: auto;
+        flex: 1;
+        min-width: 160px;
+      }
+
+      .pill-row {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .prop-actions {
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
+
+      .prop-actions .btn {
+        width: auto;
+        flex: 1;
+        min-width: 120px;
+      }
+
+      .modal-images {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .modal-images img {
+        height: 170px;
+      }
+
+      .fs-prev {
+        left: 20px;
+      }
+
+      .fs-next {
+        right: 20px;
+      }
+    }
+
+    /* =========================
+  RESPONSIVE — DESKTOP (≥ 960px)
+  ========================= */
+
+    @media (min-width: 960px) {
+      .brand-card {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 24px;
+        padding: 24px;
+      }
+
+      .brand {
+        justify-content: flex-start;
+        text-align: left;
+      }
+
+      .brand-text {
+        text-align: left;
+      }
+
+      .brand-text strong {
+        font-size: 18px;
+      }
+
+      .brand-text span {
+        font-size: 13px;
+      }
+
+      .nav {
+        justify-content: flex-end;
+      }
+
+      .nav-container .jp-icon img {
+        width: 50px;
+      }
+
+      .hero {
+        padding: 32px;
+      }
+
+      .props {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .prop-media img {
+        height: 240px;
+      }
+
+      .modal-images {
+        grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      }
+
+      .modal-images img {
+        height: 200px;
+      }
+
+      .modal-content {
+        padding: 30px;
+      }
+    }
+
+    /* =========================
+  RESPONSIVE — WIDE (≥ 1200px)
+  ========================= */
+
+    @media (min-width: 1200px) {
+      .props {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .prop-media img {
+        height: 260px;
+      }
+    }
+  </style>
+</head>
+
+<body class="cta-box">
+  <header class="header">
+    <div class="nav-container">
+      <div class="jp-icon">
+        <img src="./assets/ui/jp-icon.png" alt="JP Icon" />
+        <span>— Bem Vindo(a)! Sinta-se em casa!</span>
+      </div>
+      <nav>
+        <a href="about.html">Sobre</a>
+        <a href="contact.html">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+
+  <div class="wrap">
+
+    <!-- LOGO -->
+    <div class="logo" aria-label="Logo Jhonatan Peterson">
+      <img src="./assets/ui/jhonatanlogo.webp" alt="Jhonatan Peterson" />
+    </div>
+
+    <!-- CARD PRINCIPAL -->
+    <header class="brand-card" id="contato">
+      <div class="brand">
+        <div class="mark">
+          <img src="./assets/ui/jp-icon.png" alt="JP Icon" />
+        </div>
+        <div class="brand-text">
+          <strong>JHONATAN PETERSON</strong>
+          <span>Gestor Imobiliário • curadoria, estratégia e negociação premium.</span>
+        </div>
+      </div>
+
+      <nav class="nav">
+        <a class="btn" href="#propriedades">Propriedades</a>
+        <a class="btn" href="#diferenciais">Diferenciais</a>
+        <a class="btn btn-primary" href="https://wa.me/5511993747595" target="_blank" rel="noopener noreferrer">Falar
+          agora</a>
+      </nav>
+    </header>
+
+    <section class="hero" id="hero">
+      <div class="kicker">Alto padrão • Confiança • Conversão</div>
+
+      <h1>
+        Seu próximo imóvel <span class="accent">alto padrão</span> com curadoria e negociação no nível certo.
+      </h1>
+      <p class="lead">
+        Atendimento 1:1, seleção criteriosa e estratégia de compra/venda para reduzir ruído e acelerar decisão.
+        Aqui não tem tour infinito — tem direcionamento com propósito.
+      </p>
+
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="https://wa.me/5511993747595" target="_blank" rel="noopener noreferrer">
+          Falar no WhatsApp
+        </a>
+        <a class="btn" href="#propriedades">Ver propriedades</a>
+        <a class="btn" href="#diferenciais">Ver como funciona</a>
+      </div>
+    </section>
+
+    <div class="pill-row">
+      <div class="pill">
+        <strong>Curadoria de imóveis</strong>
+        <span>Só o que faz sentido pro seu perfil.</span>
+      </div>
+      <div class="pill">
+        <strong>Negociação estratégica</strong>
+        <span>Valor, timing e segurança no contrato.</span>
+      </div>
+      <div class="pill">
+        <strong>Atendimento premium</strong>
+        <span>Rápido, direto, sem enrolação.</span>
+      </div>
+    </div>
+
+    <p style="text-align: center; margin: 12px 0 20px; opacity: 0.7; font-size: 14px;">
+      <strong style="color: var(--gold-1);">Menos visitas</strong>, <strong style="color: var(--gold-1);">mais
+        assertividade</strong>, <strong style="color: var(--gold-1);">fechamento mais rápido</strong>.
+    </p>
+
+    <section class="card" id="propriedades">
+      <div style="text-align: center; margin-bottom: 16px;">
+        <span class="tag">Propriedades em destaque</span>
+      </div>
+      <div class="section-title">
+        <h2>Curadoria</h2>
+        <p>Clique para ver detalhes e fotos.</p>
+      </div>
+
+      <div class="props">
+        <!-- Cards dinâmicos serão adicionados aqui -->
+      </div>
+    </section>
+
+
+    <div class="card">
+      <div style="text-align: center; margin-bottom: 14px;">
+        <span class="tag">Atalho rápido</span>
+      </div>
+      <h2 style="text-align: center; margin-bottom: 10px; font-size: 20px;">Quer a lista completa?</h2>
+      <p style="text-align: center; opacity: 0.8; margin-bottom: 16px; font-size: 14px;">
+        Me diga bairro + metragem + faixa de valor. Eu retorno com as melhores opções disponíveis.
+      </p>
+      <div style="text-align: center;">
+        <a class="btn btn-primary"
+          href="https://wa.me/5511993747595?text=Quero%20a%20lista%20completa%20de%20propriedades.%20Meu%20perfil%3A%20"
+          target="_blank" rel="noopener noreferrer">
+          Pedir lista completa no WhatsApp
+        </a>
+      </div>
+    </div>
+
+    <section class="card" id="diferenciais">
+      <div style="text-align: center; margin-bottom: 20px;">
+        <span class="tag">O que você recebe</span>
+      </div>
+      <h1 style="text-align: center; font-size: clamp(20px, 4vw, 28px); margin-bottom: 20px; line-height: 1.3;">
+        Processo enxuto. Experiência premium. Resultado.
+      </h1>
+      <ul class="list">
+        <li>
+          <span class="dot"></span>
+          <span><strong>Briefing inteligente:</strong> alinhamento de perfil, região, orçamento e
+            timing.</span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><strong>Seleção estratégica:</strong> opções filtradas por liquidez, qualidade e
+            custo-benefício
+            real.</span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><strong>Visitas objetivas:</strong> roteiro eficiente para decidir com confiança.</span>
+        </li>
+        <li>
+          <span class="dot"></span>
+          <span><strong>Fechamento seguro:</strong> suporte na negociação e no caminho até a
+            assinatura.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section class="card">
+      <h2 class="depo-tag">• Depoimentos</h2>
+      <div class="quote">
+        "A curadoria economizou semanas. Visitamos poucas opções, todas certeiras.
+        Negociação firme e transparente — fechamos com segurança."
+      </div>
+      <div class="quote">
+        "Fazer negócios com o Jhonatan é sempre a melhor escolha! É o segundo imóvel que compramos com ele para
+        investimento e ele sempre é certeiro!
+        Sem dúvidas o melhor corretor de SP!"
+      </div>
+      <div class="quote">
+        "Com o Jhonatan nós sempre fechamos negócio sem medo e com a certeza de que é boa escolha!
+        Obrigado por nos ajudar mais uma vez a encontrar o lar da nossa família!"
+      </div>
+    </section>
+
+    <div class="foot">
+      <a class="back" href="#" onclick="return false;">← voltar</a>
+      <span>Jhonatan Peterson • Imobiliária de Alto Padrão • <span
+          style="color: var(--gold-1); font-weight: 700;">Golden premium</span>.</span>
+    </div>
+
+  </div><!-- /.wrap -->
+
+  <!-- Modal Structure -->
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <div class="modal-images" id="modalImages">
+        <!-- Images will be populated by JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Fullscreen Viewer with Navigation -->
+  <div id="fullscreenViewer" class="modal-fullscreen">
+    <button class="fs-arrow fs-prev" id="fsPrev">&#8249;</button>
+    <img id="fullscreenImage" src="" alt="Fullscreen" />
+    <button class="fs-arrow fs-next" id="fsNext">&#8250;</button>
+    <button class="fs-close" id="fsClose">&times;</button>
+  </div>
+
+  <!-- Modal for full description -->
+  <div id="descriptionModal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="descClose">&times;</span>
+      <h2 id="descTitle"></h2>
+      <div id="descText" style="color: #fff; white-space: pre-line; line-height: 1.7;"></div>
+    </div>
+  </div>
+
+  <!-- Back to top button -->
+  <button id="backToTop" class="back-to-top">▲</button>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="privacy.html">Política de Privacidade</a>
+      <a href="terms.html">Termos de Uso</a>
+    </div>
+    <p>© 2026 Jhonatan Peterson — Gestor Imobiliário</p>
+  </footer>
+
+  <script>
+    let propertyData = {};
+    let propertyMap = {};
+    let currentImages = [];
+    let currentImageIndex = 0;
+
+    async function boot() {
+      try {
+        const res = await fetch("./data/propertyData.json?v=" + Date.now(), { cache: "no-store" });
+        propertyData = await res.json();
+
+        const res2 = await fetch("./data/properties.json?v=" + Date.now(), { cache: "no-store" });
+        const properties = await res2.json();
+        properties.forEach(p => propertyMap[p.id] = p);
+
+        initGallery();
+      } catch (e) {
+        console.error('Error loading properties:', e);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", boot);
+
+    function initGallery() {
+      setupSlideshows();
+    }
+
+    function setupSlideshows() {
+      if (!Object.keys(propertyData).length) return;
+      document.querySelectorAll('.prop[data-property-id]').forEach(function (card) {
+        if (card._slideshowStarted) return;
+        const id = card.dataset.propertyId;
+        const data = propertyData[id];
+        if (!data || !data.images || data.images.length < 2) return;
+        const img = card.querySelector('.prop-media img');
+        if (!img) return;
+        card._slideshowStarted = true;
+        let idx = 0;
+        setInterval(function () {
+          idx = (idx + 1) % data.images.length;
+          img.src = data.images[idx].replace(/ /g, '%20');
+        }, 2000);
+      });
+    }
+
+    // Modal Elements
+    const modal = document.getElementById('myModal');
+    const modalImagesContainer = document.getElementById('modalImages');
+    const modalTitle = document.getElementById('modalTitle');
+    const modalDescription = document.getElementById('modalDescription');
+    const closeBtn = document.querySelector('.close');
+    const fullscreenViewer = document.getElementById('fullscreenViewer');
+    const fullscreenImage = document.getElementById('fullscreenImage');
+
+    // Function to open modal with specific property
+    function openModal(propertyId) {
+      const property = propertyData[propertyId];
+      if (!property) {
+        console.error('Property not found:', propertyId);
+        return;
+      }
+
+      modalTitle.textContent = property.title;
+      modalDescription.textContent = property.description || (propertyMap[propertyId] ? propertyMap[propertyId].meta || '' : '');
+      modalImagesContainer.innerHTML = '';
+
+      // Store images for fullscreen navigation
+      currentImages = property.images;
+
+      property.images.forEach((src, index) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = property.title + ' - Imagem ' + (index + 1);
+        img.loading = 'lazy';
+        img.addEventListener('click', () => openFullscreen(index));
+        modalImagesContainer.appendChild(img);
+      });
+
+      modal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    // Function to close modal
+    function closeModal() {
+      modal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Fullscreen navigation helpers
+    function updateFsArrows() {
+      const prev = document.getElementById('fsPrev');
+      const next = document.getElementById('fsNext');
+      prev.style.opacity = currentImageIndex > 0 ? '1' : '0.25';
+      prev.style.pointerEvents = currentImageIndex > 0 ? 'auto' : 'none';
+      next.style.opacity = currentImageIndex < currentImages.length - 1 ? '1' : '0.25';
+      next.style.pointerEvents = currentImageIndex < currentImages.length - 1 ? 'auto' : 'none';
+    }
+
+    function prevImage() {
+      if (currentImageIndex > 0) {
+        currentImageIndex--;
+        fullscreenImage.src = currentImages[currentImageIndex];
+        updateFsArrows();
+      }
+    }
+
+    function nextImage() {
+      if (currentImageIndex < currentImages.length - 1) {
+        currentImageIndex++;
+        fullscreenImage.src = currentImages[currentImageIndex];
+        updateFsArrows();
+      }
+    }
+
+    // Function to open fullscreen image viewer
+    function openFullscreen(index) {
+      currentImageIndex = index;
+      fullscreenImage.src = currentImages[index];
+      fullscreenViewer.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      updateFsArrows();
+    }
+
+    // Function to close fullscreen viewer
+    function closeFullscreen() {
+      fullscreenViewer.classList.remove('active');
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal on button click
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeModal);
+    }
+
+    // Close modal on click outside content
+    window.addEventListener('click', (event) => {
+      if (event.target === modal) {
+        closeModal();
+      }
+      // Close fullscreen only when clicking the dark overlay (not image/buttons)
+      if (event.target === fullscreenViewer) {
+        closeFullscreen();
+      }
+    });
+
+    // Arrow navigation buttons
+    document.getElementById('fsPrev').addEventListener('click', (e) => {
+      e.stopPropagation();
+      prevImage();
+    });
+
+    document.getElementById('fsNext').addEventListener('click', (e) => {
+      e.stopPropagation();
+      nextImage();
+    });
+
+    document.getElementById('fsClose').addEventListener('click', (e) => {
+      e.stopPropagation();
+      closeFullscreen();
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    fullscreenViewer.addEventListener('touchstart', (e) => {
+      touchStartX = e.touches[0].clientX;
+    }, { passive: true });
+
+    fullscreenViewer.addEventListener('touchend', (e) => {
+      const diff = touchStartX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 50) {
+        if (diff > 0) nextImage();
+        else prevImage();
+      }
+    }, { passive: true });
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape') {
+        if (fullscreenViewer.classList.contains('active')) {
+          closeFullscreen();
+        } else if (modal.style.display === 'block') {
+          closeModal();
+        }
+      }
+      if (fullscreenViewer.classList.contains('active')) {
+        if (event.key === 'ArrowRight') nextImage();
+        if (event.key === 'ArrowLeft') prevImage();
+      }
+    });
+
+    // Description modal
+    const descModal = document.getElementById('descriptionModal');
+    const descClose = document.getElementById('descClose');
+    const descTitle = document.getElementById('descTitle');
+    const descText = document.getElementById('descText');
+
+    function openDescModal(title, text) {
+      descTitle.textContent = title;
+      descText.textContent = text;
+      descModal.style.display = 'block';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeDescModal() {
+      descModal.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    if (descClose) {
+      descClose.addEventListener('click', closeDescModal);
+    }
+
+    window.addEventListener('click', (event) => {
+      if (event.target === descModal) {
+        closeDescModal();
+      }
+    });
+
+    document.addEventListener('keydown', (event) => {
+      if (event.key === 'Escape' && descModal.style.display === 'block') {
+        closeDescModal();
+      }
+    });
+
+    // Back to top button
+    const backToTopBtn = document.getElementById('backToTop');
+
+    function updateBackToTop() {
+      if (window.pageYOffset > 300) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    }
+
+    window.addEventListener('scroll', updateBackToTop);
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    console.log('Modal system initialized successfully');
+  </script>
+  <script>
+    (function () {
+      const container = document.querySelector('#propriedades .props');
+      if (!container) return;
+
+      const existing = new Set();
+      container.querySelectorAll('[onclick*="openModal("]').forEach((el) => {
+        const on = el.getAttribute('onclick') || '';
+        const m = on.match(/openModal\('([^']+)'\)/);
+        if (m && m[1]) existing.add(m[1]);
+      });
+
+      const waA = document.querySelector('a[href^="https://wa.me/"]');
+      const waNumber = (waA?.href.match(/wa\.me\/(\d+)/)?.[1]) || '5511993747595';
+
+      const ID_ALIAS = {};
+
+      function normalize(json) {
+        if (json && Array.isArray(json.properties)) return json.properties;
+        if (Array.isArray(json)) return json;
+        if (json && typeof json === 'object') {
+          return Object.entries(json).map(([id, v]) => ({
+            id,
+            name: v.name || v.title || id,
+            price: v.price || '',
+            category: v.category || v.location || '',
+            coverImage: v.coverImage || '',
+            gallery: v.gallery || v.images || []
+          }));
+        }
+        return [];
+      }
+
+      function safeSrc(s) {
+        return String(s || '').replace(/ /g, '%20');
+      }
+
+      function buildCard(p) {
+        const idFromJson = String(p.id || '').trim();
+        if (!idFromJson) return null;
+
+        const modalId = ID_ALIAS[idFromJson] || idFromJson;
+        if (existing.has(modalId)) return null;
+
+        const name = p.name || p.title || modalId;
+        const category = p.category || p.location || '';
+        const fullDescription = p.meta || category;
+        const price = p.price || '';
+        const cover = p.coverImage || (p.gallery && p.gallery[0]) || (p.images && p.images[0]) || '';
+        const msg = p.whatsappMessage || ('Quero detalhes de: ' + name);
+
+        const article = document.createElement('article');
+        article.className = 'prop';
+        article.dataset.propertyId = modalId;
+        article.innerHTML = `
+          <div class="prop-media">
+            <img src="${safeSrc(cover)}" alt="${name}">
+          </div>
+          <div class="prop-body">
+            <h3 class="prop-title">${name}</h3>
+            <p class="prop-meta">${category}</p>
+            <div class="prop-price">${price}</div>
+            <div class="prop-actions">
+              <a class="btn btn-primary" href="https://wa.me/${waNumber}?text=${encodeURIComponent(msg)}" target="_blank" rel="noopener noreferrer">Solicitar detalhes</a>
+              <a class="btn" href="#" onclick="openDescModal('${name.replace(/'/g, "\\'")}', '${fullDescription.replace(/'/g, "\\'").replace(/\n/g, '\\n').replace(/"/g, '\\"')}'); return false;">Ver descrição</a>
+              <a class="btn" href="#" onclick="openModal('${modalId.replace(/'/g, "\\'")}'); return false;">Ver fotos</a>
+            </div>
+          </div>
+        `;
+        return article;
+      }
+
+      fetch('./data/properties.json?v=' + Date.now(), { cache: 'no-store' })
+        .then((r) => {
+          if (!r.ok) throw new Error('Não consegui carregar ./data/properties.json');
+          return r.json();
+        })
+        .then((json) => {
+          const props = normalize(json);
+          const frag = document.createDocumentFragment();
+          props.forEach((p) => {
+            const card = buildCard(p);
+            if (card) frag.appendChild(card);
+          });
+          container.appendChild(frag);
+          setupSlideshows();
+        })
+        .catch((e) => console.error(e));
+    })();
+  </script>
+</body>
+
+</html>
