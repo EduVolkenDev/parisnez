@@ -1347,6 +1347,10 @@
   </footer>
 
   <script>
+    window.VOLYNX_SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InpkbXB6cmRlcmlmZ3FtcWl2am95Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzEwODM1NzYsImV4cCI6MjA4NjY1OTU3Nn0.ciRsDJOfbmgvGkeD791iPEn_8XmmHIejdKD6dvM8dvk";
+  </script>
+  <script src="./assets/js/supabase-catalog.js"></script>
+  <script>
     let propertyData = {};
     let propertyMap = {};
     let currentImages = [];
@@ -1354,12 +1358,9 @@
 
     async function boot() {
       try {
-        const res = await fetch("./data/propertyData.json?v=" + Date.now(), { cache: "no-store" });
-        propertyData = await res.json();
-
-        const res2 = await fetch("./data/properties.json?v=" + Date.now(), { cache: "no-store" });
-        const properties = await res2.json();
-        properties.forEach(p => propertyMap[p.id] = p);
+        const catalog = await window.johnnyCatalog.load();
+        propertyData = catalog.propertyData;
+        catalog.properties.forEach(p => propertyMap[p.id] = p);
 
         initGallery();
       } catch (e) {
@@ -1664,13 +1665,15 @@
         return article;
       }
 
-      fetch('./data/properties.json?v=' + Date.now(), { cache: 'no-store' })
-        .then((r) => {
-          if (!r.ok) throw new Error('Não consegui carregar ./data/properties.json');
-          return r.json();
-        })
-        .then((json) => {
-          const props = normalize(json);
+      window.johnnyCatalog.load()
+        .then((catalog) => {
+          if (catalog.source === 'supabase') {
+            // Supabase is authoritative when available: remove the static
+            // cards so archived or unpublished properties cannot remain public.
+            container.querySelectorAll('[data-property-id]').forEach((el) => el.remove());
+            existing.clear();
+          }
+          const props = normalize(catalog.properties);
           const frag = document.createDocumentFragment();
           props.forEach((p) => {
             const card = buildCard(p);
