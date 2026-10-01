@@ -617,37 +617,40 @@
 
     .props {
       display: grid;
-      grid-template-columns: 1fr;
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 22px;
+      margin-top: 24px;
     }
 
     .prop {
       display: flex;
       flex-direction: column;
-      gap: 14px;
-      padding: 16px;
-      border-radius: 20px;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(249, 230, 184, 0.4);
-      transition: all 0.3s ease;
+      min-width: 0;
+      overflow: hidden;
+      padding: 0;
+      border-radius: 22px;
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.035));
+      border: 1px solid rgba(249, 230, 184, 0.22);
+      transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
     }
 
     .prop:hover {
       border-color: var(--gold-2);
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.3);
+      transform: translateY(-5px);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.32);
     }
 
     .prop-media {
+      position: relative;
       width: 100%;
       overflow: hidden;
+      background: linear-gradient(135deg, rgba(212, 178, 106, .25), rgba(0, 0, 0, .22));
     }
 
     .prop-media img {
       width: 100%;
-      height: 200px;
+      height: 230px;
       object-fit: cover;
-      border-radius: 12px;
       transition: transform 0.3s ease;
       display: block;
     }
@@ -659,16 +662,21 @@
     .prop-body {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 12px;
+      min-width: 0;
+      padding: 20px;
     }
 
     .prop-title {
+      margin: 0;
       font-weight: 700;
-      font-size: 18px;
+      font-size: clamp(18px, 2vw, 22px);
+      line-height: 1.15;
       color: #fff;
     }
 
     .prop-meta {
+      margin: 0;
       font-size: 13px;
       opacity: 0.7;
       line-height: 1.5;
@@ -681,7 +689,7 @@
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
-      margin: 4px 0;
+      margin: 0;
     }
 
     /* FIX: Removido height: 5vh fixo e flex problemático */
@@ -696,6 +704,56 @@
     .prop-actions .btn {
       width: 100%;
       text-align: center;
+    }
+
+    .catalog-toolbar {
+      display: grid;
+      gap: 14px;
+      margin-top: 22px;
+    }
+
+    .catalog-toolbar input {
+      width: 100%;
+      min-height: 48px;
+      padding: 0 16px;
+      border: 1px solid rgba(249, 230, 184, .22);
+      border-radius: 999px;
+      background: rgba(0, 0, 0, .2);
+      color: #fff;
+      font: inherit;
+    }
+
+    .catalog-toolbar input::placeholder { color: rgba(255, 255, 255, .52); }
+
+    .catalog-filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+    }
+
+    .catalog-filter {
+      min-height: 42px;
+      padding: 0 15px;
+      border: 1px solid rgba(249, 230, 184, .22);
+      border-radius: 999px;
+      background: rgba(255, 255, 255, .05);
+      color: rgba(255, 255, 255, .74);
+      cursor: pointer;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .catalog-filter.is-active,
+    .catalog-filter:hover { border-color: var(--gold-1); background: rgba(212, 178, 106, .16); color: #fff; }
+
+    .catalog-status { margin: 16px 0 0; color: rgba(255, 255, 255, .62); font-size: 13px; }
+
+    .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0; }
+
+    @media (min-width: 960px) {
+      .catalog-toolbar { grid-template-columns: minmax(220px, .8fr) minmax(0, 1.6fr); align-items: center; }
+      .catalog-filters { justify-content: flex-end; }
     }
 
     /* =========================
@@ -1229,10 +1287,21 @@
       </div>
       <div class="section-title">
         <h2>Curadoria</h2>
-        <p>Clique para ver detalhes e fotos.</p>
+        <p>Escolha com calma. Veja fotos, contexto e condições de cada imóvel.</p>
       </div>
 
-      <div class="props">
+      <div class="catalog-toolbar" aria-label="Filtros do catálogo">
+        <label>
+          <span class="sr-only">Buscar imóvel</span>
+          <input id="propertySearch" type="search" placeholder="Buscar por nome, região ou categoria" autocomplete="off" />
+        </label>
+        <div class="catalog-filters" id="propertyFilters" role="group" aria-label="Filtrar imóveis">
+          <button class="catalog-filter is-active" type="button" data-filter="all">Todos</button>
+        </div>
+      </div>
+      <p class="catalog-status" id="catalogStatus" role="status" aria-live="polite">Carregando imóveis disponíveis…</p>
+
+      <div class="props" id="propertyGrid">
         <!-- Cards dinâmicos serão adicionados aqui -->
       </div>
     </section>
@@ -1618,6 +1687,9 @@
       const waNumber = (waA?.href.match(/wa\.me\/(\d+)/)?.[1]) || '5511993747595';
 
       const ID_ALIAS = {};
+      let catalogProperties = [];
+      let activeFilter = 'all';
+      let searchTerm = '';
 
       function normalize(json) {
         if (json && Array.isArray(json.properties)) return json.properties;
@@ -1656,6 +1728,7 @@
         const article = document.createElement('article');
         article.className = 'prop';
         article.dataset.propertyId = modalId;
+        article.dataset.category = category;
         article.innerHTML = `
           <div class="prop-media">
             <img src="${safeSrc(cover)}" alt="${name}">
@@ -1674,6 +1747,35 @@
         return article;
       }
 
+      function renderCatalog() {
+        const query = searchTerm.trim().toLocaleLowerCase();
+        const visible = catalogProperties.filter((property) => {
+          const category = String(property.category || 'Imóvel');
+          const haystack = [property.name, property.category, property.meta, property.price].join(' ').toLocaleLowerCase();
+          return (activeFilter === 'all' || category === activeFilter) && (!query || haystack.includes(query));
+        });
+        container.replaceChildren(...visible.map(buildCard).filter(Boolean));
+        setupSlideshows();
+        const status = document.getElementById('catalogStatus');
+        if (status) status.textContent = `${visible.length} ${visible.length === 1 ? 'imóvel disponível' : 'imóveis disponíveis'}`;
+      }
+
+      function setupFilters() {
+        const filters = document.getElementById('propertyFilters');
+        const search = document.getElementById('propertySearch');
+        if (!filters || !search) return;
+        const categories = [...new Set(catalogProperties.map((property) => String(property.category || 'Imóvel')).filter(Boolean))].sort();
+        filters.innerHTML = ['Todos', ...categories].map((label, index) => `<button class="catalog-filter${index === 0 ? ' is-active' : ''}" type="button" data-filter="${index === 0 ? 'all' : label.replace(/"/g, '&quot;')}">${label}</button>`).join('');
+        filters.addEventListener('click', (event) => {
+          const button = event.target.closest('[data-filter]');
+          if (!button) return;
+          activeFilter = button.dataset.filter || 'all';
+          filters.querySelectorAll('.catalog-filter').forEach((item) => item.classList.toggle('is-active', item === button));
+          renderCatalog();
+        });
+        search.addEventListener('input', () => { searchTerm = search.value; renderCatalog(); });
+      }
+
       window.johnnyCatalog.load()
         .then((catalog) => {
           if (catalog.source === 'supabase') {
@@ -1682,14 +1784,9 @@
             container.querySelectorAll('[data-property-id]').forEach((el) => el.remove());
             existing.clear();
           }
-          const props = normalize(catalog.properties);
-          const frag = document.createDocumentFragment();
-          props.forEach((p) => {
-            const card = buildCard(p);
-            if (card) frag.appendChild(card);
-          });
-          container.appendChild(frag);
-          setupSlideshows();
+          catalogProperties = normalize(catalog.properties);
+          setupFilters();
+          renderCatalog();
         })
         .catch((e) => console.error(e));
     })();
