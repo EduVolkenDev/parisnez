@@ -1,6 +1,7 @@
 (function () {
   const SUPABASE_URL = "https://zdmpzrderifgqmqivjoy.supabase.co";
   const SITE_ID = "645921ff-f33c-484f-b26d-2aa368b81f71";
+  const PUBLIC_HOST = "www.jhonatanpetersonimoveis.com.br";
   const BUCKET = "johnny-property-images";
   const FALLBACK_PROPERTIES = "./data/properties.json?v=" + Date.now();
   const FALLBACK_GALLERY = "./data/propertyData.json?v=" + Date.now();
@@ -32,14 +33,36 @@
     };
   }
 
+  async function loadPublishedTemplate(headers) {
+    const host = /^(localhost|127\.0\.0\.1)$/.test(window.location.hostname) ? PUBLIC_HOST : window.location.hostname;
+    const response = await fetch(SUPABASE_URL + "/rest/v1/rpc/get_public_property_flow_site", {
+      method: "POST",
+      headers: { ...headers, "Content-Type": "application/json" },
+      body: JSON.stringify({ p_host: host }),
+      cache: "no-store"
+    });
+    if (!response.ok) throw new Error("Supabase Property Flow site resolver returned " + response.status);
+    const rows = await response.json();
+    const site = Array.isArray(rows) ? rows[0] : rows;
+    const settings = site && site.settings && typeof site.settings === "object" ? site.settings : {};
+    const propertyFlow = settings.property_flow && typeof settings.property_flow === "object" ? settings.property_flow : {};
+    return String(propertyFlow.template_key || "classic-grid");
+  }
+
   async function loadRemote() {
     const headers = { apikey: window.VOLYNX_SUPABASE_ANON_KEY || "" };
     const base = SUPABASE_URL + "/rest/v1/";
+    let template = "classic-grid";
+    try {
+      template = await loadPublishedTemplate(headers);
+    } catch (error) {
+      console.warn("[johnny-catalog] Using the default catalog template:", error.message);
+    }
     const query = "?select=id,slug,title,category,summary,description,price_label,whatsapp_message&site_id=eq." + encodeURIComponent(SITE_ID) + "&status=eq.published&order=sort_order.asc,created_at.desc";
     const propertiesResponse = await fetch(base + "property_listings" + query, { headers, cache: "no-store" });
     if (!propertiesResponse.ok) throw new Error("Supabase property catalog returned " + propertiesResponse.status);
     const properties = await propertiesResponse.json();
-    if (!Array.isArray(properties) || !properties.length) return null;
+    if (!Array.isArray(properties) || !properties.length) return { properties: [], propertyData: {}, source: "supabase", template };
 
     const ids = properties.map((property) => property.id).join(",");
     const imagesQuery = "?select=property_id,storage_path,is_cover,sort_order&site_id=eq." + encodeURIComponent(SITE_ID) + "&property_id=in.(" + ids + ")&order=sort_order.asc";
@@ -56,7 +79,7 @@
       return map;
     }, {});
     normalized.forEach((property) => delete property._gallery);
-    return { properties: normalized, propertyData, source: "supabase" };
+    return { properties: normalized, propertyData, source: "supabase", template };
   }
 
   async function loadFallback() {
@@ -64,7 +87,7 @@
     if (!propertiesResponse.ok || !galleryResponse.ok) throw new Error("Could not load the local property catalog");
     const properties = await propertiesResponse.json();
     const propertyData = await galleryResponse.json();
-    return { properties: Array.isArray(properties) ? properties : [], propertyData: propertyData || {}, source: "local" };
+    return { properties: Array.isArray(properties) ? properties : [], propertyData: propertyData || {}, source: "local", template: "classic-grid" };
   }
 
   window.johnnyCatalog = {

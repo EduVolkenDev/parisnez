@@ -706,6 +706,34 @@
       text-align: center;
     }
 
+    /* The selected Property Flow template is applied here from the same
+       published site setting used by the hosted renderer. */
+    #propriedades[data-property-template="compact-list"] .props,
+    #propriedades[data-property-template="catalog"] .props,
+    #propriedades[data-property-template="timeline"] .props { grid-template-columns: 1fr; }
+
+    #propriedades[data-property-template="compact-list"] .prop,
+    #propriedades[data-property-template="catalog"] .prop,
+    #propriedades[data-property-template="timeline"] .prop { display: grid; grid-template-columns: minmax(180px, .45fr) 1fr; }
+
+    #propriedades[data-property-template="compact-list"] .prop-media img,
+    #propriedades[data-property-template="catalog"] .prop-media img,
+    #propriedades[data-property-template="timeline"] .prop-media img { height: 100%; min-height: 220px; }
+
+    #propriedades[data-property-template="editorial"] .prop:first-child,
+    #propriedades[data-property-template="magazine"] .prop:first-child,
+    #propriedades[data-property-template="gallery-hero"] .prop:first-child,
+    #propriedades[data-property-template="showroom"] .prop:first-child,
+    #propriedades[data-property-template="story-mode"] .prop:first-child,
+    #propriedades[data-property-template="grouped"] .prop:first-child,
+    #propriedades[data-property-template="map-first"] .prop:first-child { grid-column: span 2; }
+
+    #propriedades[data-property-template="masonry"] .props { display: block; columns: 3 280px; column-gap: 22px; }
+    #propriedades[data-property-template="masonry"] .prop { break-inside: avoid; margin: 0 0 22px; }
+    #propriedades[data-property-template="minimalist"] .prop { border-color: rgba(249, 230, 184, .12); background: transparent; box-shadow: none; }
+    #propriedades[data-property-template="card-stack"] .prop { transform: translateY(calc(var(--card-index, 0) * 4px)); }
+    #propriedades[data-property-template="split-view"] .props { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
     .catalog-toolbar {
       display: grid;
       gap: 14px;
@@ -754,6 +782,20 @@
     @media (min-width: 960px) {
       .catalog-toolbar { grid-template-columns: minmax(220px, .8fr) minmax(0, 1.6fr); align-items: center; }
       .catalog-filters { justify-content: flex-end; }
+    }
+
+    @media (max-width: 700px) {
+      #propriedades[data-property-template="compact-list"] .prop,
+      #propriedades[data-property-template="catalog"] .prop,
+      #propriedades[data-property-template="timeline"] .prop { display: flex; }
+      #propriedades[data-property-template="editorial"] .prop:first-child,
+      #propriedades[data-property-template="magazine"] .prop:first-child,
+      #propriedades[data-property-template="gallery-hero"] .prop:first-child,
+      #propriedades[data-property-template="showroom"] .prop:first-child,
+      #propriedades[data-property-template="story-mode"] .prop:first-child,
+      #propriedades[data-property-template="grouped"] .prop:first-child,
+      #propriedades[data-property-template="map-first"] .prop:first-child { grid-column: auto; }
+      #propriedades[data-property-template="split-view"] .props { grid-template-columns: 1fr; }
     }
 
     /* =========================
@@ -1690,6 +1732,11 @@
       let catalogProperties = [];
       let activeFilter = 'all';
       let searchTerm = '';
+      const supportedTemplates = new Set([
+        'classic-grid', 'compact-list', 'catalog', 'timeline', 'editorial', 'magazine',
+        'gallery-hero', 'showroom', 'story-mode', 'grouped', 'map-first', 'masonry',
+        'minimalist', 'card-stack', 'split-view'
+      ]);
 
       function normalize(json) {
         if (json && Array.isArray(json.properties)) return json.properties;
@@ -1729,6 +1776,7 @@
         article.className = 'prop';
         article.dataset.propertyId = modalId;
         article.dataset.category = category;
+        article.style.setProperty('--card-index', String(catalogProperties.indexOf(p)));
         article.innerHTML = `
           <div class="prop-media">
             <img src="${safeSrc(cover)}" alt="${name}">
@@ -1760,6 +1808,13 @@
         if (status) status.textContent = `${visible.length} ${visible.length === 1 ? 'imóvel disponível' : 'imóveis disponíveis'}`;
       }
 
+      function applyPublishedTemplate(template) {
+        const section = document.getElementById('propriedades');
+        if (!section) return;
+        const normalized = String(template || '').trim().toLowerCase();
+        section.dataset.propertyTemplate = supportedTemplates.has(normalized) ? normalized : 'classic-grid';
+      }
+
       function setupFilters() {
         const filters = document.getElementById('propertyFilters');
         const search = document.getElementById('propertySearch');
@@ -1784,6 +1839,7 @@
             container.querySelectorAll('[data-property-id]').forEach((el) => el.remove());
             existing.clear();
           }
+          applyPublishedTemplate(catalog.template);
           catalogProperties = normalize(catalog.properties);
           setupFilters();
           renderCatalog();
